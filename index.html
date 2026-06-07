@@ -4,814 +4,779 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VICUNIA — Regalos Únicos · Cajamarca, Perú</title>
-<meta name="description" content="VICUNIA: Regalos únicos hechos a mano en Cajamarca. Amigurumis crochet, impresión 3D, flores artesanales y ramos personalizados. Cada pieza cuenta una historia.">
-
-<!--
-  ╔══════════════════════════════════════════════════════╗
-  ║  VICUNIA — Brand Design System v3.0                 ║
-  ║  Skills aplicadas:                                   ║
-  ║  • bencium-innovative-ux-designer (v2.0.0)          ║
-  ║  • bencium-controlled-ux-designer (v1.0.0)          ║
-  ║                                                      ║
-  ║  TONO ELEGIDO: "Organic/Natural + Editorial"         ║
-  ║  Artesanía andina × diseño editorial contemporáneo  ║
-  ║                                                      ║
-  ║  ANTI-PATRONES EVITADOS:                            ║
-  ║  ✗ Inter/Roboto → ✓ Syne + Lora + DM Sans          ║
-  ║  ✗ SaaS blue → ✓ Paleta cajamarquina               ║
-  ║  ✗ Glass morphism → ✓ Grain texture + color blocks  ║
-  ║  ✗ Apple mimicry → ✓ Voz propia andina              ║
-  ║  ✗ Cookie-cutter layouts → ✓ Bento asimétrico       ║
-  ╚══════════════════════════════════════════════════════╝
--->
-
-<!-- Distinctive fonts — NOT Inter, Roboto, or Space Grotesk -->
+<meta name="description" content="VICUNIA crea regalos únicos hechos a mano en Cajamarca: amigurumis crochet, impresión 3D, flores artesanales y ramos personalizados. Cada pieza cuenta una historia.">
+<meta property="og:title" content="VICUNIA — Regalos Únicos · Cajamarca">
+<meta property="og:description" content="Crochet artesanal · Impresión 3D · Flores · Regalos personalizados desde Cajamarca, Perú">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<!-- ═══════════════════════════════════════════════════════════
+  DESIGN PHILOSOPHY — "Carnaval Editorial Andino"
+  
+  PROPÓSITO: Presentar VICUNIA como la marca artesanal
+  premium de Cajamarca que fusiona tradición andina con 
+  diseño contemporáneo.
+  
+  TONO: Festivo pero sofisticado. Cálido pero preciso.
+  Como el carnaval mismo: explosivo y ordenado.
+  
+  RESTRICCIONES:
+  ✓ Paleta fija de 7 colores identitarios cajamarquinos
+  ✓ Tipografía: Montserrat (marca/headings) + DM Sans (cuerpo)
+  ✓ El logo vicuña siempre con fill-rule=evenodd (knockout V)
+  ✓ Jerarquía: ícono vicuña → wordmark VICUNIA → subtítulo
+  ✓ Cada sección tiene un "color anchor" dominante
+  ✓ Secciones alternas: oscuro / claro / oscuro
+  
+  SISTEMA DE GRID: Mobile-first, 4col en desktop.
+  Bento-style para productos: asimetría intencional.
+════════════════════════════════════════════════════════════ -->
 
 <style>
-/* ═══════════════════════════════════════════════════
-   DESIGN TOKENS — Escala matemática 1.25× (Major 3rd)
-   Sistema: bencium-controlled-ux-designer
-═══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   BRAND TOKENS — Sistema de diseño VICUNIA 2025
+   Nivel: Brand Guidelines + Theme Factory
+══════════════════════════════════════════════════════ */
 :root {
-  /* ── Paleta cajamarquina (Brand Guidelines) ─────── */
-  --carnaval:  #D4500A;
-  --carnaval-d:#A03A06;
-  --retama:    #F0A500;
-  --retama-d:  #C07E00;
-  --jalca:     #2E7D32;
-  --morado:    #7B3F9E;
-  --rosa:      #C2185B;
-  --azul:      #003087;
-  --barro:     #5C3317;
-  --barro-d:   #3D2010;
+  /* Paleta cajamarquina */
+  --carnaval:  #D4500A;   /* Naranja carnaval */
+  --retama:    #F0A500;   /* Amarillo retama */
+  --jalca:     #2E7D32;   /* Verde jalca */
+  --morado:    #7B3F9E;   /* Morado festivo */
+  --rosa:      #C2185B;   /* Rosa pasión */
+  --patria:    #D91023;   /* Rojo patria */
+  --azul:      #003087;   /* Azul uniforme */
+  --barro:     #5C3317;   /* Barro terracota */
+  --queso:     #FDF3DC;   /* Crema queso */
+  --espresso:  #120A02;   /* Negro espresso */
+  --noche:     #1C1008;   /* Fondo oscuro */
+  --madera:    #2E1A0A;   /* Madera oscura */
+  
+  /* Escala tipográfica */
+  --type-xs:   0.6rem;    /* 9.6px */
+  --type-sm:   0.75rem;   /* 12px */
+  --type-base: 1rem;      /* 16px */
+  --type-lg:   1.125rem;  /* 18px */
+  --type-xl:   1.5rem;    /* 24px */
+  --type-2xl:  2rem;      /* 32px */
+  --type-3xl:  3rem;      /* 48px */
+  --type-hero: clamp(5rem, 18vw, 14rem);
 
-  /* ── Neutros cálidos (warm greys — no cool) ─────── */
-  --ink:       #0E0702;   /* texto máximo */
-  --espresso:  #140C04;   /* fondo oscuro principal */
-  --noche:     #1C1208;   /* fondo oscuro secundario */
-  --madera:    #261608;   /* superficies oscuras */
-  --tierra:    #3D2B12;   /* bordes cálidos */
-  --arena:     #C8A87A;   /* texto secundario cálido */
-  --lino:      #EDE3CE;   /* fondo claro secundario */
-  --queso:     #FDF6E3;   /* fondo claro principal */
-  --crema:     #FFFDF7;   /* blanco cálido */
+  /* Espaciado modular */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
 
-  /* ── Escala tipográfica 1.25× (Major Third) ──────── */
-  --t-xs:   0.64rem;   /*  10.2px */
-  --t-sm:   0.80rem;   /*  12.8px */
-  --t-base: 1.00rem;   /*  16px   */
-  --t-lg:   1.25rem;   /*  20px   */
-  --t-xl:   1.563rem;  /*  25px   */
-  --t-2xl:  1.953rem;  /*  31px   */
-  --t-3xl:  2.441rem;  /*  39px   */
-  --t-4xl:  3.052rem;  /*  49px   */
-  --t-5xl:  3.815rem;  /*  61px   */
-  --t-disp: clamp(4rem, 14vw, 11rem);
+  /* Radios */
+  --radius-sm:  8px;
+  --radius-md:  16px;
+  --radius-lg:  24px;
+  --radius-xl:  40px;
+  --radius-pill: 100px;
 
-  /* ── Espaciado módular 8px base ──────────────────── */
-  --s-1:   0.25rem;  /* 4  */
-  --s-2:   0.5rem;   /* 8  */
-  --s-3:   0.75rem;  /* 12 */
-  --s-4:   1rem;     /* 16 */
-  --s-5:   1.25rem;  /* 20 */
-  --s-6:   1.5rem;   /* 24 */
-  --s-8:   2rem;     /* 32 */
-  --s-10:  2.5rem;   /* 40 */
-  --s-12:  3rem;     /* 48 */
-  --s-16:  4rem;     /* 64 */
-  --s-20:  5rem;     /* 80 */
-  --s-24:  6rem;     /* 96 */
-  --s-32:  8rem;     /* 128*/
-
-  /* ── Radios ──────────────────────────────────────── */
-  --r-sm:   6px;
-  --r-md:   14px;
-  --r-lg:   22px;
-  --r-xl:   36px;
-  --r-pill: 9999px;
-
-  /* ── Sombras ──────────────────────────────────────── */
-  --shadow-sm:  0 2px 8px rgba(14,7,2,.25);
-  --shadow-md:  0 8px 32px rgba(14,7,2,.35);
-  --shadow-lg:  0 20px 60px rgba(14,7,2,.5);
-  --shadow-warm:0 8px 40px rgba(212,80,10,.22);
-  --shadow-glow:0 0 60px rgba(212,80,10,.18);
-
-  /* ── Transiciones ────────────────────────────────── */
-  --ease-out:     cubic-bezier(.22,1,.36,1);
-  --ease-in-out:  cubic-bezier(.45,0,.55,1);
-  --dur-fast:   150ms;
-  --dur-std:    280ms;
-  --dur-slow:   500ms;
+  /* Sombras */
+  --shadow-warm: 0 8px 40px rgba(212,80,10,0.18);
+  --shadow-deep: 0 24px 80px rgba(0,0,0,0.5);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.3);
 }
 
-/* ═══════════════════════════════════════════════════
-   RESET & BASE — accesible y semántico
-═══════════════════════════════════════════════════ */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; font-size:16px; -webkit-text-size-adjust:100%; }
+/* ══════════════════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════════════════ */
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
 body {
-  font-family:'DM Sans', sans-serif;
-  font-size:var(--t-base);
-  line-height:1.6;
+  font-family:'DM Sans',sans-serif;
   background:var(--espresso);
   color:var(--queso);
   overflow-x:hidden;
-  /* Grain texture — anti-gloss aesthetic */
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  line-height:1.6;
 }
-img { display:block; max-width:100%; height:auto; }
+img { display:block; max-width:100%; }
 a { text-decoration:none; color:inherit; }
-ul { list-style:none; }
-button { cursor:pointer; border:none; background:none; font:inherit; }
-:focus-visible {
-  outline:2px solid var(--retama);
-  outline-offset:3px;
-  border-radius:var(--r-sm);
-}
 
-/* ── prefers-reduced-motion (WCAG) ───────────────── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
-  }
-}
-
-/* ═══════════════════════════════════════════════════
-   SISTEMA TIPOGRÁFICO — Syne + Lora (no Inter/Roboto)
-   Syne: Display/UI — carácter geométrico, moderno
-   Lora: Itálica/énfasis — calor editorial, serif
-   DM Sans: Cuerpo — legibilidad, neutralidad cálida
-═══════════════════════════════════════════════════ */
-.font-display   { font-family:'Syne', sans-serif; }
-.font-serif     { font-family:'Lora', serif; }
-.font-body      { font-family:'DM Sans', sans-serif; }
-
-.text-label {
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
+/* ══════════════════════════════════════════════════════
+   UTILIDADES DE MARCA
+══════════════════════════════════════════════════════ */
+.brand-label {
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-xs);
   letter-spacing:.38em;
   text-transform:uppercase;
-}
-.text-label-line {
   display:flex;
   align-items:center;
-  gap:var(--s-4);
+  gap:var(--space-4);
 }
-.text-label-line::after {
+.brand-label::after {
   content:'';
   flex:1;
   height:1px;
   background:currentColor;
-  opacity:.18;
+  opacity:.2;
+}
+.brand-title {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  line-height:1.02;
+  letter-spacing:-.01em;
+}
+.italic-accent {
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-weight:400;
 }
 
-/* ═══════════════════════════════════════════════════
-   REVEAL ANIMATIONS — physics-informed ease-out
-═══════════════════════════════════════════════════ */
+/* Reveal animation */
 .reveal {
   opacity:0;
-  transform:translateY(28px);
-  transition:
-    opacity var(--dur-slow) var(--ease-out),
-    transform var(--dur-slow) var(--ease-out);
+  transform:translateY(32px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
 }
-.reveal.up   { transform:translateY(28px); }
-.reveal.left { transform:translateX(-28px); }
-.reveal.visible { opacity:1; transform:translate(0,0); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-left {
+  opacity:0;
+  transform:translateX(-32px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+}
+.reveal-left.visible { opacity:1; transform:translateX(0); }
 
-/* ═══════════════════════════════════════════════════
-   RAINBOW STRIPE — sticky top identifier
-═══════════════════════════════════════════════════ */
-.rainbow {
-  height:4px;
+/* ══════════════════════════════════════════════════════
+   RAINBOW STRIPE (sticky top)
+══════════════════════════════════════════════════════ */
+.rainbow-stripe {
+  height:5px;
   display:flex;
   position:sticky;
   top:0;
-  z-index:400;
+  z-index:300;
 }
-.rainbow span { flex:1; }
+.rainbow-stripe div { flex:1; }
 
-/* ═══════════════════════════════════════════════════
-   NAV — functional, dark, Syne font
-═══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   NAV
+══════════════════════════════════════════════════════ */
 nav {
   position:sticky;
-  top:4px;
-  z-index:399;
-  background:rgba(20,12,4,.94);
-  backdrop-filter:blur(20px) saturate(180%);
-  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  top:5px;
+  z-index:299;
+  background:rgba(18,10,2,0.92);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:11px 48px;
-  border-bottom:1px solid rgba(253,246,227,.05);
+  padding:12px 44px;
+  border-bottom:1px solid rgba(253,243,220,.06);
 }
-.nav-brand {
+.nav-logo {
   display:flex;
   align-items:center;
-  gap:var(--s-3);
-  text-decoration:none;
+  gap:var(--space-3);
+  cursor:default;
 }
-.nav-vicu { width:26px; height:28px; flex-shrink:0; }
-.nav-name {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:17px;
-  letter-spacing:.2em;
+.nav-vicu {
+  width:28px;
+  height:30px;
+  flex-shrink:0;
+}
+.nav-wordmark {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:18px;
+  letter-spacing:.22em;
   display:flex;
 }
-.nav-links {
-  display:flex;
-  gap:var(--s-6);
-}
+.nav-links { display:flex; gap:28px; list-style:none; }
 .nav-links a {
-  font-family:'Syne', sans-serif;
-  font-weight:600;
-  font-size:var(--t-xs);
-  letter-spacing:.24em;
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:8px;
+  letter-spacing:.28em;
+  color:var(--queso);
   opacity:.4;
-  transition:opacity var(--dur-fast) var(--ease-out);
+  transition:opacity .2s;
 }
-.nav-links a:hover,
-.nav-links a[aria-current="page"] { opacity:1; }
-.nav-btn {
+.nav-links a:hover { opacity:1; }
+.nav-cta {
   display:flex;
   align-items:center;
-  gap:var(--s-2);
+  gap:6px;
   background:var(--carnaval);
   color:var(--queso);
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.18em;
-  padding:9px 20px;
-  border-radius:var(--r-pill);
-  transition:background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
-  min-height:44px; /* WCAG touch target */
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:8px;
+  letter-spacing:.2em;
+  padding:8px 18px;
+  border-radius:var(--radius-pill);
+  transition:background .2s, transform .15s;
 }
-.nav-btn:hover { background:var(--carnaval-d); transform:translateY(-1px); }
+.nav-cta:hover { background:#b83d06; transform:translateY(-1px); }
 
-/* ═══════════════════════════════════════════════════
-   HERO — Editorial/Organic
-   "Gran gesto" tipográfico + vicuña animada flotante
-   Atmosfera: gradient mesh + grain
-═══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   HERO — Canvas Design: Filosofía visual "gran gesto"
+   Layout: tipo display enorme + vicuña animada lateral
+══════════════════════════════════════════════════════ */
 .hero {
   min-height:100svh;
   background:var(--noche);
   position:relative;
   overflow:hidden;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  padding:120px 48px 80px;
-  gap:var(--s-16);
-}
-
-/* Gradient mesh atmospheric background */
-.hero::before {
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(ellipse 60% 70% at 15% 50%, rgba(212,80,10,.12) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 85% 30%, rgba(123,63,158,.1) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 50% 80%, rgba(240,165,0,.07) 0%, transparent 60%);
-  pointer-events:none;
-}
-
-/* Grain overlay for texture */
-.hero::after {
-  content:'';
-  position:absolute;
-  inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events:none;
-  opacity:.6;
-}
-
-.hero-left { position:relative; z-index:2; }
-.hero-right {
-  position:relative;
-  z-index:2;
   display:flex;
-  align-items:center;
+  flex-direction:column;
   justify-content:center;
+  padding:80px 44px 60px;
 }
 
-/* Eyebrow */
-.hero-eyebrow {
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.44em;
-  color:var(--retama);
-  opacity:.75;
-  margin-bottom:var(--s-8);
-  animation:fade-up .6s var(--ease-out) both;
-}
-
-/* Display type — el "gran gesto" editorial */
-.hero-title {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:var(--t-disp);
-  line-height:.92;
-  letter-spacing:-.03em;
-  margin-bottom:var(--s-8);
-  animation:fade-up .7s .06s var(--ease-out) both;
-}
-.hero-title-italic {
-  font-family:'Lora', serif;
-  font-weight:400;
-  font-style:italic;
-  font-size:calc(var(--t-disp) * 0.82);
-  display:block;
-  color:var(--retama);
-  letter-spacing:-.01em;
-  line-height:1.05;
-}
-.hero-title-accent { color:var(--carnaval); }
-
-/* Tagline */
-.hero-tagline {
-  font-size:var(--t-lg);
-  font-weight:300;
-  color:var(--lino);
-  opacity:.7;
-  line-height:1.75;
-  max-width:44ch;
-  margin-bottom:var(--s-10);
-  animation:fade-up .7s .12s var(--ease-out) both;
-}
-.hero-tagline strong { color:var(--retama); font-weight:500; }
-
-/* Chips */
-.hero-chips {
-  display:flex;
-  gap:var(--s-2);
-  flex-wrap:wrap;
-  margin-bottom:var(--s-10);
-  animation:fade-up .7s .18s var(--ease-out) both;
-}
-.chip {
-  padding:6px 14px;
-  border-radius:var(--r-pill);
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.12em;
-  border:1.5px solid currentColor;
-  transition:transform var(--dur-fast) var(--ease-out), background var(--dur-fast);
-  min-height:32px;
-  display:flex;
-  align-items:center;
-}
-.chip:hover { transform:translateY(-2px); background:rgba(255,255,255,.07); }
-
-/* CTA row */
-.hero-cta {
-  display:flex;
-  gap:var(--s-3);
-  flex-wrap:wrap;
-  animation:fade-up .7s .24s var(--ease-out) both;
-}
-.btn-primary {
-  display:inline-flex;
-  align-items:center;
-  gap:var(--s-2);
-  background:var(--carnaval);
-  color:var(--queso);
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.2em;
-  padding:14px 28px;
-  border-radius:var(--r-pill);
-  min-height:48px;
-  box-shadow:0 6px 28px rgba(212,80,10,.38);
-  transition:
-    background var(--dur-fast) var(--ease-out),
-    transform var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-fast) var(--ease-out);
-}
-.btn-primary:hover {
-  background:var(--carnaval-d);
-  transform:translateY(-2px);
-  box-shadow:0 12px 40px rgba(212,80,10,.5);
-}
-.btn-outline {
-  display:inline-flex;
-  align-items:center;
-  gap:var(--s-2);
-  color:var(--queso);
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.2em;
-  padding:14px 28px;
-  border-radius:var(--r-pill);
-  border:1.5px solid rgba(253,246,227,.22);
-  min-height:48px;
-  transition:border-color var(--dur-fast), transform var(--dur-fast) var(--ease-out);
-}
-.btn-outline:hover { border-color:rgba(253,246,227,.5); transform:translateY(-2px); }
-
-/* Vicuña flotante + gradiente arco iris animado */
-.hero-vicu-wrap {
-  position:relative;
-  animation:
-    vicu-float 5s var(--ease-in-out) infinite alternate,
-    fade-up .9s .08s var(--ease-out) both;
-}
-@keyframes vicu-float {
-  from { transform:translateY(-16px) rotate(-1deg); }
-  to   { transform:translateY(16px) rotate(1deg); }
-}
-.hero-vicu-glow {
+/* Fondo: vicuña fantasma gigante */
+.hero-ghost-vicu {
   position:absolute;
-  inset:-40px;
-  background:radial-gradient(ellipse, rgba(212,80,10,.2) 0%, transparent 70%);
-  border-radius:50%;
-  animation:glow-pulse 4s ease-in-out infinite alternate;
-}
-@keyframes glow-pulse {
-  from { opacity:.5; transform:scale(1); }
-  to   { opacity:1; transform:scale(1.1); }
+  right:-8%;
+  top:50%;
+  transform:translateY(-50%);
+  width:min(70vw, 680px);
+  height:auto;
+  opacity:.04;
+  pointer-events:none;
 }
 
-/* Pompones */
+/* Orbs de color */
+.orb {
+  position:absolute;
+  border-radius:50%;
+  filter:blur(90px);
+  pointer-events:none;
+}
+.orb-a { width:500px;height:500px;background:var(--carnaval);top:-15%;left:-10%;opacity:.14;animation:orb-drift 12s ease-in-out infinite alternate; }
+.orb-b { width:380px;height:380px;background:var(--morado);bottom:-10%;right:10%;opacity:.12;animation:orb-drift 10s ease-in-out infinite alternate-reverse; }
+.orb-c { width:280px;height:280px;background:var(--retama);top:40%;left:40%;opacity:.08;animation:orb-drift 8s ease-in-out infinite alternate; }
+@keyframes orb-drift {
+  from { transform:translate(0,0) scale(1); }
+  to   { transform:translate(30px,20px) scale(1.12); }
+}
+
+/* Pompones de carnaval */
 .pom {
   position:absolute;
   border-radius:50%;
   pointer-events:none;
-  animation:pom-drift linear infinite;
+  animation:pom-fall linear infinite;
 }
-@keyframes pom-drift {
-  0%   { transform:translateY(-60px) rotate(0deg);   opacity:.7; }
-  100% { transform:translateY(110vh) rotate(640deg);  opacity:0; }
+@keyframes pom-fall {
+  0%   { transform:translateY(-80px) rotate(0deg); opacity:.8; }
+  100% { transform:translateY(110vh) rotate(720deg); opacity:0; }
 }
+
+.hero-eyebrow {
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-xs);
+  letter-spacing:.42em;
+  color:var(--retama);
+  opacity:.7;
+  animation:fade-up .7s ease both;
+  margin-bottom:var(--space-8);
+}
+
+/* Display type — el "gran gesto" de Canvas Design */
+.hero-display {
+  position:relative;
+  z-index:2;
+  margin-bottom:var(--space-6);
+}
+.hero-display-word {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:var(--type-hero);
+  line-height:.92;
+  letter-spacing:-.02em;
+  display:block;
+  animation:fade-up .8s ease both;
+}
+.hero-display-word:nth-child(1) { animation-delay:.05s; }
+.hero-display-word:nth-child(2) { animation-delay:.12s; font-style:italic; font-family:'Playfair Display',serif; font-weight:700; letter-spacing:-.01em; }
+.hero-display-word:nth-child(3) { animation-delay:.19s; }
+
+/* Tagline + chips */
+.hero-meta {
+  display:flex;
+  flex-direction:column;
+  gap:var(--space-6);
+  animation:fade-up .8s .28s ease both;
+  position:relative;
+  z-index:2;
+  max-width:560px;
+}
+.hero-tagline {
+  font-size:var(--type-lg);
+  font-weight:300;
+  color:var(--queso);
+  opacity:.65;
+  line-height:1.6;
+}
+.hero-tagline strong {
+  color:var(--retama);
+  font-weight:500;
+  font-style:italic;
+}
+
+.hero-chips {
+  display:flex;
+  gap:var(--space-2);
+  flex-wrap:wrap;
+}
+.chip {
+  padding:7px 16px;
+  border-radius:var(--radius-pill);
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-xs);
+  letter-spacing:.14em;
+  transition:transform .2s, opacity .2s;
+  cursor:default;
+  border:1.5px solid currentColor;
+}
+.chip:hover { transform:translateY(-2px); opacity:.9; }
+
+/* Vicuña animada en hero — flotante */
+.hero-vicu-wrap {
+  position:absolute;
+  right:8%;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:3;
+  animation:vicu-float 5s ease-in-out infinite alternate, fade-up .9s .1s ease both;
+  filter:drop-shadow(0 12px 48px rgba(212,80,10,0.25));
+}
+@keyframes vicu-float {
+  from { transform:translateY(calc(-50% - 12px)); }
+  to   { transform:translateY(calc(-50% + 12px)); }
+}
+
+/* CTA row */
+.hero-cta-row {
+  display:flex;
+  gap:var(--space-4);
+  align-items:center;
+  animation:fade-up .8s .36s ease both;
+  position:relative;
+  z-index:2;
+  margin-top:var(--space-8);
+}
+.btn-primary {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:var(--carnaval);
+  color:var(--queso);
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:9px;
+  letter-spacing:.2em;
+  padding:14px 28px;
+  border-radius:var(--radius-pill);
+  transition:background .2s, transform .15s, box-shadow .2s;
+  box-shadow:0 4px 24px rgba(212,80,10,.4);
+}
+.btn-primary:hover { background:#b83d06; transform:translateY(-2px); box-shadow:0 8px 32px rgba(212,80,10,.5); }
+.btn-ghost {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--queso);
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:9px;
+  letter-spacing:.2em;
+  padding:14px 28px;
+  border-radius:var(--radius-pill);
+  border:1.5px solid rgba(253,243,220,.25);
+  transition:border-color .2s, transform .15s;
+}
+.btn-ghost:hover { border-color:rgba(253,243,220,.6); transform:translateY(-2px); }
 
 /* Scroll hint */
 .scroll-hint {
   position:absolute;
-  bottom:var(--s-8);
+  bottom:36px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:var(--s-2);
-  opacity:.2;
-  animation:hint-bounce 2.8s var(--ease-in-out) infinite;
-  z-index:3;
+  gap:6px;
+  opacity:.25;
+  animation:bounce 2.5s ease-in-out infinite;
 }
-.scroll-hint-text { font-family:'Syne',sans-serif; font-weight:700; font-size:7px; letter-spacing:.38em; }
-.scroll-hint-line { width:1px; height:32px; background:var(--queso); }
-@keyframes hint-bounce {
-  0%,100% { transform:translateX(-50%) translateY(0); }
-  50%     { transform:translateX(-50%) translateY(10px); }
+.scroll-hint span { font-family:'Montserrat',sans-serif; font-weight:800; font-size:7px; letter-spacing:.34em; }
+.scroll-line { width:1px; height:36px; background:var(--queso); }
+@keyframes bounce {
+  0%,100%  { transform:translateX(-50%) translateY(0); }
+  50%      { transform:translateX(-50%) translateY(10px); }
 }
-
 @keyframes fade-up {
-  from { opacity:0; transform:translateY(24px); }
+  from { opacity:0; transform:translateY(28px); }
   to   { opacity:1; transform:translateY(0); }
 }
 
-/* ═══════════════════════════════════════════════════
-   MARQUEE — rítmico, color sólido, Syne
-═══════════════════════════════════════════════════ */
-.marquee {
+/* ══════════════════════════════════════════════════════
+   MARQUEE TICKER — separador rítmico entre secciones
+══════════════════════════════════════════════════════ */
+.marquee-strip {
+  background:var(--carnaval);
   overflow:hidden;
-  padding:13px 0;
+  padding:14px 0;
+  border-top:1px solid rgba(255,255,255,.1);
+  border-bottom:1px solid rgba(0,0,0,.2);
 }
-.marquee-inner {
+.marquee-track {
   display:flex;
+  gap:0;
   width:max-content;
-  animation:marquee-scroll 26s linear infinite;
+  animation:marquee 22s linear infinite;
 }
-.marquee-inner.rev { animation:marquee-rev 32s linear infinite; }
-@keyframes marquee-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-@keyframes marquee-rev    { from { transform:translateX(-50%); } to { transform:translateX(0); } }
+.marquee-track.reverse { animation:marquee-rev 22s linear infinite; background:var(--barro); }
+@keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+@keyframes marquee-rev { from { transform:translateX(-50%); } to { transform:translateX(0); } }
 .marquee-item {
-  display:flex;
-  align-items:center;
-  gap:var(--s-6);
-  padding:0 var(--s-6);
   white-space:nowrap;
-  font-family:'Syne', sans-serif;
-  font-weight:700;
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
   font-size:11px;
   letter-spacing:.22em;
+  color:var(--queso);
+  padding:0 28px;
+  display:flex;
+  align-items:center;
+  gap:28px;
 }
-.marquee-sep {
-  width:4px;
-  height:4px;
-  border-radius:50%;
-  background:currentColor;
-  opacity:.45;
-}
+.marquee-dot { width:5px; height:5px; border-radius:50%; background:rgba(253,243,220,.5); }
 
-/* ═══════════════════════════════════════════════════
-   SECTION WRAPPER
-═══════════════════════════════════════════════════ */
-.sec { padding:var(--s-24) 48px; }
-.sec-inner { max-width:1120px; margin:0 auto; }
-.sec-header { margin-bottom:var(--s-16); }
-.sec-num {
-  font-family:'Syne',sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.38em;
-  opacity:.35;
-  margin-bottom:var(--s-3);
+/* ══════════════════════════════════════════════════════
+   QUIÉNES SOMOS — Implement Design: layout asimétrico
+   con texto grande + stat blocks
+══════════════════════════════════════════════════════ */
+.quienes-sec {
+  background:var(--madera);
+  padding:var(--space-24) 44px;
+  position:relative;
+  overflow:hidden;
 }
-.sec-title {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:clamp(2.2rem, 5.5vw, 4.5rem);
-  line-height:1.02;
-  letter-spacing:-.02em;
-}
-.sec-title-em {
-  font-family:'Lora', serif;
-  font-weight:400;
-  font-style:italic;
-  letter-spacing:-.01em;
-}
-
-/* ═══════════════════════════════════════════════════
-   QUIÉNES SOMOS — layout asimétrico, dos columnas
-═══════════════════════════════════════════════════ */
-.quienes-sec { background:var(--madera); }
 .quienes-sec::before {
   content:'';
-  display:block;
+  position:absolute;
+  top:0; left:0; right:0;
   height:1px;
-  background:linear-gradient(90deg, transparent, var(--carnaval) 30%, var(--retama) 60%, transparent);
+  background:linear-gradient(90deg,transparent,var(--carnaval),var(--retama),transparent);
 }
-.quienes-grid {
-  display:grid;
-  grid-template-columns:1.1fr 0.9fr;
-  gap:var(--s-20);
-  align-items:start;
-  margin-top:var(--s-16);
-}
-.quienes-body {
-  font-size:var(--t-lg);
-  font-weight:300;
-  line-height:1.85;
-  opacity:.82;
-  margin-top:var(--s-8);
-}
-.quienes-body strong { color:var(--retama); font-weight:500; }
-
-.stats {
+.quienes-inner {
+  max-width:1100px;
+  margin:0 auto;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:var(--s-3);
-  margin-top:var(--s-10);
-}
-.stat {
-  background:rgba(253,246,227,.04);
-  border:1px solid rgba(253,246,227,.07);
-  border-radius:var(--r-lg);
-  padding:var(--s-6) var(--s-5);
-  transition:background var(--dur-std) var(--ease-out);
-}
-.stat:hover { background:rgba(253,246,227,.08); }
-.stat-n {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:clamp(1.8rem, 3.5vw, 2.8rem);
-  line-height:1;
-  margin-bottom:var(--s-1);
-}
-.stat-l { font-size:var(--t-sm); font-weight:300; opacity:.55; line-height:1.4; }
-
-.valores { display:flex; flex-direction:column; gap:var(--s-2); }
-.valor {
-  display:grid;
-  grid-template-columns:2.5rem 1fr;
-  gap:var(--s-4);
+  gap:80px;
   align-items:start;
-  padding:var(--s-5) var(--s-5);
-  border-radius:var(--r-md);
-  background:rgba(253,246,227,.03);
-  border:1px solid rgba(253,246,227,.05);
-  transition:background var(--dur-std) var(--ease-out), border-color var(--dur-std);
+}
+.quienes-left {}
+.quienes-tagline {
+  font-size:clamp(2.4rem,5vw,4.2rem);
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  line-height:1.05;
+  letter-spacing:-.01em;
+  margin:var(--space-6) 0 var(--space-8);
+}
+.quienes-tagline em {
+  font-style:italic;
+  font-family:'Playfair Display',serif;
+  color:var(--retama);
+}
+.quienes-body {
+  font-size:var(--type-lg);
+  font-weight:300;
+  opacity:.8;
+  line-height:1.85;
+}
+.quienes-body strong { color:var(--retama); font-weight:600; }
+
+/* Stat blocks */
+.stats-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:var(--space-4);
+  margin-top:var(--space-8);
+}
+.stat-block {
+  background:rgba(253,243,220,.04);
+  border:1px solid rgba(253,243,220,.08);
+  border-radius:var(--radius-lg);
+  padding:var(--space-6);
+  transition:background .2s;
+}
+.stat-block:hover { background:rgba(253,243,220,.07); }
+.stat-num {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:clamp(2rem,4vw,3.2rem);
+  line-height:1;
+  margin-bottom:var(--space-2);
+}
+.stat-label {
+  font-size:var(--type-sm);
+  font-weight:300;
+  opacity:.6;
+  line-height:1.4;
+}
+
+/* Values accordion style */
+.quienes-right {
+  display:flex;
+  flex-direction:column;
+  gap:var(--space-3);
+  padding-top:var(--space-16);
+}
+.valor-row {
+  display:flex;
+  gap:var(--space-4);
+  align-items:flex-start;
+  padding:var(--space-6);
+  border-radius:var(--radius-md);
+  background:rgba(253,243,220,.03);
+  border:1px solid rgba(253,243,220,.06);
+  transition:background .25s, border-color .25s;
   cursor:default;
 }
-.valor:hover {
-  background:rgba(253,246,227,.07);
-  border-color:rgba(253,246,227,.12);
+.valor-row:hover {
+  background:rgba(253,243,220,.07);
+  border-color:rgba(253,243,220,.15);
 }
-.valor-icon { font-size:1.3rem; padding-top:2px; }
-.valor-title {
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-sm);
-  letter-spacing:.06em;
-  margin-bottom:var(--s-1);
+.valor-icon {
+  font-size:1.5rem;
+  flex-shrink:0;
+  margin-top:2px;
 }
-.valor-desc { font-size:var(--t-sm); font-weight:300; opacity:.6; line-height:1.55; }
+.valor-text strong {
+  display:block;
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-sm);
+  letter-spacing:.08em;
+  margin-bottom:4px;
+}
+.valor-text span {
+  font-size:var(--type-sm);
+  font-weight:300;
+  opacity:.65;
+  line-height:1.55;
+}
 
-/* ═══════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
    PRODUCTOS — Bento Grid asimétrico
-   Implement Design: jerarquía por tamaño de celda
-═══════════════════════════════════════════════════ */
-.productos-sec { background:var(--espresso); }
-.bento {
-  display:grid;
-  grid-template-columns:repeat(12, 1fr);
-  grid-auto-rows:220px;
-  gap:14px;
+   Implement Design: jerarquía visual por tamaño
+══════════════════════════════════════════════════════ */
+.productos-sec {
+  background:var(--espresso);
+  padding:var(--space-24) 44px;
 }
-/* Celdas — asimetría intencional */
-.bento-a { grid-column:span 5; grid-row:span 2; } /* Amigurumis — hero */
-.bento-b { grid-column:span 7; grid-row:span 1; } /* Flores — wide */
-.bento-c { grid-column:span 4; grid-row:span 1; } /* 3D */
-.bento-d { grid-column:span 3; grid-row:span 1; } /* Ropa */
-.bento-e { grid-column:span 4; grid-row:span 1; } /* Mundial */
-.bento-f { grid-column:span 4; grid-row:span 1; } /* Regalos */
-.bento-g { grid-column:span 4; grid-row:span 1; } /* CTA */
+.productos-inner { max-width:1100px; margin:0 auto; }
+.sec-header { margin-bottom:var(--space-12); }
+.sec-counter {
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-xs);
+  letter-spacing:.38em;
+  opacity:.35;
+  margin-bottom:var(--space-3);
+}
 
-.bcard {
-  border-radius:var(--r-lg);
+/* Bento grid — 3 cols, varied row heights */
+.bento-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:16px;
+}
+.bento-card {
+  border-radius:var(--radius-lg);
   overflow:hidden;
   position:relative;
   background:var(--madera);
-  cursor:pointer;
-  transition:transform var(--dur-std) var(--ease-out), box-shadow var(--dur-std);
+  transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
 }
-.bcard:hover {
-  transform:translateY(-5px) scale(1.01);
-  box-shadow:var(--shadow-lg);
+.bento-card:hover {
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-deep);
 }
-.bcard:focus-visible { outline:3px solid var(--retama); }
-.bcard img {
+/* Spans */
+.bento-card.span-2 { grid-column:span 2; }
+.bento-card.tall    { min-height:420px; }
+.bento-card.short   { min-height:260px; }
+
+.bento-img {
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:transform var(--dur-slow) var(--ease-out);
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
+  min-height:inherit;
 }
-.bcard:hover img { transform:scale(1.06); }
-.bcard-overlay {
+.bento-card:hover .bento-img { transform:scale(1.05); }
+
+.bento-overlay {
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(14,7,2,.92) 0%,
-    rgba(14,7,2,.3) 55%,
-    transparent 100%
-  );
+  background:linear-gradient(to top, rgba(18,10,2,.9) 0%, rgba(18,10,2,.2) 60%, transparent 100%);
 }
-.bcard-body {
+.bento-content {
   position:absolute;
   bottom:0;
   left:0;
   right:0;
-  padding:var(--s-5) var(--s-5) var(--s-4);
+  padding:var(--space-6);
 }
-.bcard-tag {
-  display:inline-flex;
-  align-items:center;
-  padding:3px 10px;
-  border-radius:var(--r-pill);
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.12em;
-  margin-bottom:var(--s-2);
-}
-.bcard-name {
-  font-family:'Syne', sans-serif;
+.bento-tag {
+  display:inline-block;
+  padding:4px 12px;
+  border-radius:var(--radius-pill);
+  font-family:'Montserrat',sans-serif;
   font-weight:800;
-  font-size:1.1rem;
+  font-size:var(--type-xs);
+  letter-spacing:.14em;
+  margin-bottom:var(--space-2);
+}
+.bento-name {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:1.2rem;
   letter-spacing:.02em;
   line-height:1.2;
 }
-.bcard-desc {
-  font-size:var(--t-sm);
+.bento-desc {
+  font-size:var(--type-sm);
   font-weight:300;
-  opacity:.65;
+  opacity:.7;
+  margin-top:var(--space-2);
   line-height:1.5;
-  margin-top:var(--s-1);
 }
-/* CTA card — color sólido en lugar de imagen */
-.bcard-cta {
-  background:linear-gradient(135deg, var(--carnaval), var(--retama-d));
+
+/* CTA de producto */
+.bento-cta {
+  position:absolute;
+  top:var(--space-4);
+  right:var(--space-4);
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:rgba(18,10,2,.7);
+  backdrop-filter:blur(8px);
   display:flex;
-  flex-direction:column;
   align-items:center;
   justify-content:center;
-  text-align:center;
-  gap:var(--s-4);
-  padding:var(--s-8);
-  cursor:default;
+  font-size:1rem;
+  opacity:0;
+  transform:scale(.8);
+  transition:opacity .25s, transform .25s;
 }
-.bcard-cta:hover { transform:translateY(-5px); }
-.bcard-cta-icon { font-size:2rem; }
-.bcard-cta-text {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:1.1rem;
-  letter-spacing:.04em;
-  line-height:1.2;
-  color:var(--queso);
-}
-.bcard-cta-sub { font-size:var(--t-sm); opacity:.75; font-weight:300; color:var(--queso); }
-.bcard-cta-btn {
-  background:rgba(255,255,255,.18);
-  border:1.5px solid rgba(255,255,255,.35);
-  color:var(--queso);
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.18em;
-  padding:9px 20px;
-  border-radius:var(--r-pill);
-  transition:background var(--dur-fast), transform var(--dur-fast) var(--ease-out);
-  min-height:44px;
-}
-.bcard-cta:hover .bcard-cta-btn {
-  background:rgba(255,255,255,.28);
-  transform:translateY(-1px);
-}
+.bento-card:hover .bento-cta { opacity:1; transform:scale(1); }
 
-/* ═══════════════════════════════════════════════════
-   PROCESO — Cards numeradas, fondo claro
-═══════════════════════════════════════════════════ */
-.proceso-sec { background:var(--queso); color:var(--ink); }
+/* ══════════════════════════════════════════════════════
+   MARQUEE 2 — tono barro
+══════════════════════════════════════════════════════ */
+.marquee-strip-2 { background:var(--barro); overflow:hidden; padding:12px 0; }
+
+/* ══════════════════════════════════════════════════════
+   PROCESO — Frontend Design: propósito claro
+   Cards numeradas con hover reveal
+══════════════════════════════════════════════════════ */
+.proceso-sec {
+  background:var(--queso);
+  color:var(--espresso);
+  padding:var(--space-24) 44px;
+  position:relative;
+}
+.proceso-inner { max-width:1100px; margin:0 auto; }
 .proceso-grid {
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:var(--s-4);
-  margin-top:var(--s-12);
+  grid-template-columns:repeat(4,1fr);
+  gap:var(--space-4);
+  margin-top:var(--space-12);
 }
-.paso {
+.proceso-step {
   background:var(--espresso);
   color:var(--queso);
-  border-radius:var(--r-lg);
-  padding:var(--s-8) var(--s-6);
+  border-radius:var(--radius-lg);
+  padding:var(--space-8) var(--space-6);
   position:relative;
   overflow:hidden;
-  transition:transform var(--dur-std) var(--ease-out), box-shadow var(--dur-std);
+  transition:transform .3s, box-shadow .3s;
 }
-.paso:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
-.paso-bg-num {
-  position:absolute;
-  right:-8px;
-  top:-16px;
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:6rem;
+.proceso-step:hover {
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-deep);
+}
+.paso-num {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:5rem;
   line-height:1;
   opacity:.06;
-  color:var(--queso);
-  user-select:none;
+  position:absolute;
+  top:-8px;
+  right:12px;
 }
-.paso-icon { font-size:1.8rem; margin-bottom:var(--s-5); position:relative; }
-.paso-title {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:var(--t-base);
-  letter-spacing:.04em;
-  margin-bottom:var(--s-3);
+.paso-icon {
+  font-size:2rem;
+  margin-bottom:var(--space-4);
   position:relative;
+  z-index:1;
+}
+.paso-title {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:1rem;
+  letter-spacing:.04em;
+  margin-bottom:var(--space-3);
+  position:relative;
+  z-index:1;
 }
 .paso-body {
-  font-size:var(--t-sm);
+  font-size:var(--type-sm);
   font-weight:300;
-  opacity:.6;
+  opacity:.65;
   line-height:1.65;
   position:relative;
+  z-index:1;
 }
-.paso-bar {
+
+/* Accent bar per step */
+.proceso-step::after {
+  content:'';
   position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
+  bottom:0; left:0; right:0;
   height:3px;
+  border-radius:0 0 var(--radius-lg) var(--radius-lg);
   transform:scaleX(0);
   transform-origin:left;
-  transition:transform var(--dur-std) var(--ease-out);
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
 }
-.paso:hover .paso-bar { transform:scaleX(1); }
+.proceso-step:hover::after { transform:scaleX(1); }
+.proceso-step:nth-child(1)::after { background:var(--carnaval); }
+.proceso-step:nth-child(2)::after { background:var(--retama); }
+.proceso-step:nth-child(3)::after { background:var(--jalca); }
+.proceso-step:nth-child(4)::after { background:var(--morado); }
 
-/* ═══════════════════════════════════════════════════
-   TESTIMONIOS — dark, glassmorphism-free
-═══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   TESTIMONIOS — Social proof + Brand tone
+══════════════════════════════════════════════════════ */
 .testi-sec {
   background:var(--noche);
+  padding:var(--space-24) 44px;
   position:relative;
   overflow:hidden;
 }
@@ -819,384 +784,430 @@ nav {
   content:'';
   position:absolute;
   inset:0;
-  background:radial-gradient(ellipse 60% 60% at 80% 40%, rgba(123,63,158,.08) 0%, transparent 60%);
-  pointer-events:none;
+  background:radial-gradient(ellipse at 70% 50%, rgba(123,63,158,.08) 0%, transparent 60%);
 }
+.testi-inner { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
 .testi-grid {
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:var(--s-4);
-  margin-top:var(--s-12);
+  grid-template-columns:1fr 1fr 1fr;
+  gap:var(--space-4);
+  margin-top:var(--space-12);
 }
 .testi-card {
-  background:rgba(253,246,227,.04);
-  border:1px solid rgba(253,246,227,.07);
-  border-radius:var(--r-lg);
-  padding:var(--s-8);
-  transition:
-    background var(--dur-std) var(--ease-out),
-    border-color var(--dur-std),
-    transform var(--dur-std) var(--ease-out);
+  background:rgba(253,243,220,.04);
+  border:1px solid rgba(253,243,220,.08);
+  border-radius:var(--radius-lg);
+  padding:var(--space-8);
+  position:relative;
+  transition:background .25s, border-color .25s, transform .3s;
 }
 .testi-card:hover {
-  background:rgba(253,246,227,.07);
-  border-color:rgba(253,246,227,.15);
+  background:rgba(253,243,220,.07);
+  border-color:rgba(253,243,220,.16);
   transform:translateY(-4px);
 }
-.testi-stars { color:var(--retama); font-size:1rem; letter-spacing:2px; margin-bottom:var(--s-4); }
-.testi-open-quote {
-  font-family:'Lora', serif;
-  font-size:3.5rem;
-  line-height:.4;
-  display:block;
+.testi-stars {
   color:var(--retama);
-  margin-bottom:var(--s-4);
-  opacity:.7;
+  font-size:1.1rem;
+  letter-spacing:2px;
+  margin-bottom:var(--space-4);
 }
-.testi-text {
-  font-size:var(--t-base);
+.testi-quote {
+  font-size:var(--type-lg);
   font-weight:300;
-  line-height:1.8;
-  opacity:.82;
-  margin-bottom:var(--s-6);
-  font-style:italic;
-  font-family:'Lora', serif;
+  line-height:1.75;
+  opacity:.85;
+  margin-bottom:var(--space-6);
 }
-.testi-author { display:flex; align-items:center; gap:var(--s-3); }
-.testi-av {
+.testi-quote::before { content:'\201C'; font-family:'Playfair Display',serif; font-size:2.5rem; color:var(--retama); line-height:.5; display:block; margin-bottom:var(--space-3); }
+.testi-author {
+  display:flex;
+  align-items:center;
+  gap:var(--space-3);
+}
+.testi-avatar {
   width:40px;
   height:40px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:var(--t-base);
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:1rem;
   flex-shrink:0;
 }
 .testi-name {
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-sm);
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-sm);
   letter-spacing:.06em;
 }
-.testi-city { font-size:var(--t-xs); opacity:.45; letter-spacing:.1em; }
+.testi-city { font-size:var(--type-xs); opacity:.5; letter-spacing:.1em; }
 
-/* ═══════════════════════════════════════════════════
-   ÉPOCAS — grid 3 cols, headers con gradientes
-═══════════════════════════════════════════════════ */
-.epocas-sec { background:var(--madera); }
-.epocas-grid {
+/* ══════════════════════════════════════════════════════
+   ÉPOCAS — Temporadas de VICUNIA
+══════════════════════════════════════════════════════ */
+.epocas-sec {
+  background:var(--madera);
+  padding:var(--space-24) 44px;
+  position:relative;
+}
+.epocas-inner { max-width:1100px; margin:0 auto; }
+.epocas-scroll {
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:var(--s-4);
-  margin-top:var(--s-12);
+  grid-template-columns:repeat(3,1fr);
+  gap:var(--space-4);
+  margin-top:var(--space-12);
 }
-.eca {
-  border-radius:var(--r-lg);
+.epoca-card {
+  border-radius:var(--radius-lg);
   overflow:hidden;
-  background:rgba(253,246,227,.04);
-  border:1px solid rgba(253,246,227,.07);
-  transition:transform var(--dur-std) var(--ease-out), box-shadow var(--dur-std);
+  background:rgba(253,243,220,.04);
+  border:1px solid rgba(253,243,220,.08);
+  transition:transform .3s, box-shadow .3s;
 }
-.eca:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
-.eca-head {
-  min-height:150px;
+.epoca-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-deep); }
+.epoca-head {
+  min-height:140px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:var(--s-2);
-  padding:var(--s-8) var(--s-6);
+  gap:10px;
+  padding:var(--space-8) var(--space-6);
   position:relative;
   overflow:hidden;
 }
-.eca-bg-vicu {
+.epoca-vicu {
   position:absolute;
-  right:-15px;
-  bottom:-15px;
-  opacity:.1;
+  right:-10px;
+  bottom:-10px;
+  opacity:.12;
 }
-.eca-brand {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:1.7rem;
+.epoca-brand {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:1.8rem;
   letter-spacing:.12em;
+  line-height:1;
   position:relative;
   z-index:1;
 }
-.eca-sub {
-  font-family:'Syne', sans-serif;
-  font-weight:600;
-  font-size:var(--t-xs);
-  letter-spacing:.28em;
+.epoca-sub {
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-xs);
+  letter-spacing:.3em;
   opacity:.65;
   position:relative;
   z-index:1;
 }
-.eca-body { padding:var(--s-5) var(--s-6); }
-.eca-nombre {
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-sm);
-  letter-spacing:.05em;
-  margin-bottom:var(--s-2);
+.epoca-body { padding:var(--space-6); }
+.epoca-nombre {
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-sm);
+  letter-spacing:.06em;
+  margin-bottom:var(--space-3);
 }
-.eca-desc { font-size:var(--t-sm); font-weight:300; opacity:.6; line-height:1.6; }
-.eca-tags { display:flex; gap:6px; flex-wrap:wrap; margin-top:var(--s-3); }
+.epoca-desc { font-size:var(--type-sm); font-weight:300; opacity:.65; line-height:1.6; }
+.epoca-tags {
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:var(--space-4);
+}
 .etag {
   padding:3px 10px;
-  border-radius:var(--r-pill);
-  background:rgba(253,246,227,.07);
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.1em;
-  opacity:.65;
+  border-radius:var(--radius-pill);
+  background:rgba(253,243,220,.08);
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-xs);
+  letter-spacing:.12em;
+  opacity:.7;
 }
 
-/* ═══════════════════════════════════════════════════
-   SISTEMA LOGOS — 3×2 grid
-═══════════════════════════════════════════════════ */
-.logos-sec { background:var(--espresso); }
+/* ══════════════════════════════════════════════════════
+   SISTEMA DE LOGOS — Brand Guidelines aplicado
+══════════════════════════════════════════════════════ */
+.logos-sec {
+  background:var(--espresso);
+  padding:var(--space-24) 44px;
+}
+.logos-inner { max-width:1100px; margin:0 auto; }
 .logos-grid {
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:var(--s-4);
-  margin-top:var(--s-12);
+  grid-template-columns:repeat(3,1fr);
+  gap:var(--space-4);
+  margin-top:var(--space-12);
 }
 .logo-card {
-  border-radius:var(--r-lg);
+  border-radius:var(--radius-lg);
   overflow:hidden;
-  transition:transform var(--dur-std) var(--ease-out), box-shadow var(--dur-std);
+  transition:transform .3s, box-shadow .3s;
 }
-.logo-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+.logo-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-deep); }
 .logo-face {
   min-height:180px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:var(--s-3);
-  padding:var(--s-8) var(--s-6);
+  padding:var(--space-8) var(--space-6);
+  gap:var(--space-3);
 }
-.logo-div { width:44px; height:2px; border-radius:2px; }
+.logo-divider { width:48px; height:2px; border-radius:2px; }
 .logo-sub {
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.22em;
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-xs);
+  letter-spacing:.24em;
 }
 .logo-info {
-  padding:var(--s-3) var(--s-5);
-  background:rgba(0,0,0,.25);
+  padding:var(--space-4) var(--space-5);
+  background:rgba(0,0,0,.3);
 }
 .logo-uso {
-  font-family:'Syne', sans-serif;
-  font-weight:600;
-  font-size:var(--t-xs);
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-xs);
   letter-spacing:.14em;
-  opacity:.55;
+  opacity:.6;
 }
 
-/* ═══════════════════════════════════════════════════
-   PALETA — 7 swatches
-═══════════════════════════════════════════════════ */
-.paleta-sec { background:var(--queso); color:var(--ink); }
+/* ══════════════════════════════════════════════════════
+   PALETA DE COLORES
+══════════════════════════════════════════════════════ */
+.paleta-sec {
+  background:var(--queso);
+  color:var(--espresso);
+  padding:var(--space-24) 44px;
+}
+.paleta-inner { max-width:1100px; margin:0 auto; }
 .paleta-grid {
   display:grid;
-  grid-template-columns:repeat(7, 1fr);
-  gap:var(--s-3);
-  margin-top:var(--s-12);
+  grid-template-columns:repeat(7,1fr);
+  gap:var(--space-3);
+  margin-top:var(--space-12);
 }
 .swatch {
-  border-radius:var(--r-md);
+  border-radius:var(--radius-md);
   overflow:hidden;
-  transition:transform var(--dur-std) var(--ease-out), box-shadow var(--dur-std);
+  transition:transform .25s, box-shadow .25s;
 }
-.swatch:hover { transform:translateY(-6px); box-shadow:0 12px 40px rgba(14,7,2,.15); }
+.swatch:hover { transform:translateY(-6px); box-shadow:0 12px 40px rgba(0,0,0,.2); }
 .swatch-color { aspect-ratio:1; }
-.swatch-info { padding:var(--s-3); background:rgba(14,7,2,.06); }
+.swatch-info {
+  padding:var(--space-4);
+  background:rgba(0,0,0,.06);
+}
 .swatch-name {
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.08em;
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:var(--type-xs);
+  letter-spacing:.1em;
   line-height:1.3;
 }
-.swatch-hex { font-size:var(--t-xs); opacity:.45; font-weight:300; }
+.swatch-hex {
+  font-size:var(--type-xs);
+  opacity:.5;
+  font-weight:300;
+  letter-spacing:.06em;
+}
 
-/* ═══════════════════════════════════════════════════
-   TIPOGRAFÍA — Sección Brand Guidelines
-═══════════════════════════════════════════════════ */
-.tipo-sec { background:var(--noche); }
-.tipo-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:var(--s-4);
-  margin-top:var(--s-12);
-}
-.tipo-card {
-  background:rgba(253,246,227,.03);
-  border:1px solid rgba(253,246,227,.07);
-  border-radius:var(--r-lg);
-  padding:var(--s-8);
-  transition:background var(--dur-std);
-}
-.tipo-card:hover { background:rgba(253,246,227,.06); }
-.tipo-specimen-main {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:clamp(2rem,4.5vw,3.5rem);
-  letter-spacing:-.01em;
-  line-height:1;
-  margin-bottom:var(--s-2);
-}
-.tipo-specimen-serif {
-  font-family:'Lora', serif;
-  font-style:italic;
-  font-size:clamp(1.5rem,3vw,2.5rem);
-  color:var(--retama);
-  line-height:1.2;
-}
-.tipo-specimen-body { font-size:var(--t-base); font-weight:300; opacity:.65; line-height:1.75; }
-.tipo-sep { height:1px; background:rgba(253,246,227,.07); margin:var(--s-6) 0; }
-.tipo-row { display:flex; justify-content:space-between; padding:var(--s-2) 0; font-size:var(--t-sm); }
-.tipo-key { opacity:.45; font-weight:300; }
-.tipo-val { font-family:'Syne',sans-serif; font-weight:700; font-size:var(--t-xs); letter-spacing:.1em; }
-
-/* ═══════════════════════════════════════════════════
-   PEDIDOS CTA — gran cierre, carnaval color
-═══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   PEDIDOS CTA — "el gran cierre"
+══════════════════════════════════════════════════════ */
 .pedidos-sec {
   background:var(--carnaval);
+  padding:var(--space-24) 44px;
   position:relative;
   overflow:hidden;
   text-align:center;
 }
-/* Atmospheric background text */
 .pedidos-sec::before {
   content:'VICUNIA';
   position:absolute;
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:clamp(8rem,22vw,20rem);
-  letter-spacing:-.04em;
-  color:rgba(255,255,255,.06);
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:clamp(10rem,22vw,22rem);
+  letter-spacing:-.02em;
+  color:rgba(255,255,255,.05);
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
   white-space:nowrap;
   pointer-events:none;
-  user-select:none;
 }
-/* Grain on CTA */
-.pedidos-sec::after {
-  content:'';
-  position:absolute;
-  inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-  pointer-events:none;
+.pedidos-inner {
+  max-width:700px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
 }
-.pedidos-inner { max-width:680px; margin:0 auto; position:relative; z-index:1; }
 .pedidos-title {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:clamp(2.5rem,7vw,5.5rem);
-  line-height:1.02;
-  letter-spacing:-.025em;
-  color:var(--queso);
-  margin-bottom:var(--s-6);
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:clamp(2.5rem,6vw,5rem);
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin-bottom:var(--space-6);
 }
 .pedidos-title em {
-  font-family:'Lora', serif;
+  font-family:'Playfair Display',serif;
   font-style:italic;
   font-weight:400;
 }
-.pedidos-sub { font-size:var(--t-lg); font-weight:300; opacity:.82; margin-bottom:var(--s-12); line-height:1.7; color:var(--queso); }
+.pedidos-sub {
+  font-size:var(--type-lg);
+  font-weight:300;
+  opacity:.8;
+  margin-bottom:var(--space-12);
+  line-height:1.7;
+}
 .pedidos-btn {
   display:inline-flex;
   align-items:center;
-  gap:var(--s-3);
+  gap:10px;
   background:var(--espresso);
   color:var(--queso);
-  font-family:'Syne', sans-serif;
-  font-weight:700;
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
   font-size:10px;
-  letter-spacing:.2em;
-  padding:18px 44px;
-  border-radius:var(--r-pill);
-  min-height:56px;
-  box-shadow:0 12px 48px rgba(14,7,2,.35);
-  transition:
-    background var(--dur-fast) var(--ease-out),
-    transform var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-fast) var(--ease-out);
+  letter-spacing:.22em;
+  padding:18px 40px;
+  border-radius:var(--radius-pill);
+  transition:background .2s, transform .15s, box-shadow .2s;
+  box-shadow:0 8px 40px rgba(0,0,0,.3);
 }
 .pedidos-btn:hover {
-  background:var(--ink);
+  background:#0a0400;
   transform:translateY(-3px);
-  box-shadow:0 20px 64px rgba(14,7,2,.5);
+  box-shadow:0 16px 60px rgba(0,0,0,.45);
 }
 
-/* ═══════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
+   TIPOGRAFÍA — Sección Brand Guidelines
+══════════════════════════════════════════════════════ */
+.tipo-sec {
+  background:var(--noche);
+  padding:var(--space-24) 44px;
+}
+.tipo-inner { max-width:1100px; margin:0 auto; }
+.tipo-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:var(--space-6);
+  margin-top:var(--space-12);
+}
+.tipo-card {
+  background:rgba(253,243,220,.04);
+  border:1px solid rgba(253,243,220,.08);
+  border-radius:var(--radius-lg);
+  padding:var(--space-10) var(--space-8);
+  transition:background .25s;
+}
+.tipo-card:hover { background:rgba(253,243,220,.07); }
+.tipo-sample {
+  margin-bottom:var(--space-6);
+  padding-bottom:var(--space-6);
+  border-bottom:1px solid rgba(253,243,220,.08);
+}
+.tipo-specimen-main {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:clamp(2rem,5vw,4rem);
+  letter-spacing:-.01em;
+  line-height:1;
+}
+.tipo-specimen-body {
+  font-family:'DM Sans',sans-serif;
+  font-size:1.1rem;
+  font-weight:300;
+  line-height:1.75;
+  opacity:.7;
+  margin-top:var(--space-3);
+}
+.tipo-specimen-italic {
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:clamp(1.5rem,3vw,2.5rem);
+  color:var(--retama);
+  line-height:1.2;
+}
+.tipo-meta { display:flex; flex-direction:column; gap:var(--space-3); }
+.tipo-rule {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:var(--type-sm);
+}
+.tipo-rule-key { font-weight:300; opacity:.5; }
+.tipo-rule-val { font-family:'Montserrat',sans-serif; font-weight:800; font-size:var(--type-xs); letter-spacing:.1em; }
+
+/* ══════════════════════════════════════════════════════
    FOOTER
-═══════════════════════════════════════════════════ */
+══════════════════════════════════════════════════════ */
 footer {
   background:var(--espresso);
-  border-top:1px solid rgba(253,246,227,.05);
-  padding:var(--s-16) 48px var(--s-12);
+  border-top:1px solid rgba(253,243,220,.06);
+  padding:var(--space-16) 44px var(--space-12);
   text-align:center;
 }
-.footer-brand {
+.footer-vicu {
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:var(--s-4);
-  margin-bottom:var(--s-3);
+  gap:var(--space-4);
+  margin-bottom:var(--space-4);
 }
-.footer-name {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
+.footer-wordmark {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
   font-size:clamp(3rem,8vw,6rem);
-  letter-spacing:.1em;
+  letter-spacing:.12em;
   display:flex;
 }
 .footer-tagline {
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:var(--t-xs);
-  letter-spacing:.32em;
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-xs);
+  letter-spacing:.3em;
   color:var(--retama);
-  opacity:.65;
-  margin-bottom:var(--s-8);
+  opacity:.7;
+  margin-bottom:var(--space-8);
 }
-.footer-nav {
+.footer-links {
   display:flex;
-  gap:var(--s-6);
+  gap:28px;
   justify-content:center;
+  margin-bottom:var(--space-8);
   flex-wrap:wrap;
-  margin-bottom:var(--s-8);
 }
-.footer-nav a {
-  font-family:'Syne', sans-serif;
-  font-weight:600;
-  font-size:var(--t-xs);
+.footer-links a {
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:var(--type-xs);
   letter-spacing:.18em;
-  opacity:.28;
-  transition:opacity var(--dur-fast);
+  opacity:.3;
+  transition:opacity .2s;
 }
-.footer-nav a:hover { opacity:.65; }
-.footer-copy { font-size:11px; opacity:.18; font-weight:300; }
+.footer-links a:hover { opacity:.7; }
+.footer-copy {
+  font-size:11px;
+  opacity:.2;
+  font-weight:300;
+}
 
-/* ═══════════════════════════════════════════════════
-   WHATSAPP FAB
-═══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   WhatsApp FAB
+══════════════════════════════════════════════════════ */
 .wa-fab {
   position:fixed;
-  bottom:var(--s-8);
-  right:var(--s-8);
+  bottom:32px;
+  right:32px;
   z-index:500;
   width:58px;
   height:58px;
@@ -1205,94 +1216,93 @@ footer {
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 8px 32px rgba(37,211,102,.42);
-  animation:wa-pulse 2.8s ease-in-out infinite;
-  transition:transform var(--dur-fast) var(--ease-out);
+  box-shadow:0 8px 32px rgba(37,211,102,.4);
+  animation:wa-pulse 2.5s ease-in-out infinite;
+  transition:transform .2s;
 }
 .wa-fab:hover { transform:scale(1.1); }
+.wa-fab svg { width:28px; height:28px; }
 @keyframes wa-pulse {
-  0%,100% { box-shadow:0 8px 32px rgba(37,211,102,.42); }
-  50%      { box-shadow:0 8px 52px rgba(37,211,102,.68), 0 0 0 14px rgba(37,211,102,.07); }
+  0%,100% { box-shadow:0 8px 32px rgba(37,211,102,.4); }
+  50%      { box-shadow:0 8px 48px rgba(37,211,102,.65), 0 0 0 14px rgba(37,211,102,.07); }
 }
 
-/* ═══════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
    RESPONSIVE
-═══════════════════════════════════════════════════ */
-@media(max-width:1024px) {
-  .hero { grid-template-columns:1fr; min-height:auto; padding:100px 32px 70px; }
-  .hero-right { display:none; }
-  .hero-title { font-size:clamp(3.5rem,12vw,7rem); }
-  .quienes-grid { grid-template-columns:1fr; gap:var(--s-12); }
-  .bento { grid-template-columns:repeat(6, 1fr); grid-auto-rows:200px; }
-  .bento-a { grid-column:span 3; grid-row:span 2; }
-  .bento-b { grid-column:span 3; grid-row:span 1; }
-  .bento-c,.bento-d { grid-column:span 2; }
-  .bento-e,.bento-f,.bento-g { grid-column:span 2; }
+══════════════════════════════════════════════════════ */
+@media(max-width:960px) {
+  nav { padding:12px 20px; }
+  .nav-links,.nav-cta { display:none; }
+  .hero { padding:80px 24px 60px; }
+  .hero-vicu-wrap { display:none; }
+  .hero-display-word { font-size:clamp(3.5rem,14vw,8rem); }
+  .quienes-inner { grid-template-columns:1fr; gap:48px; }
+  .bento-grid { grid-template-columns:1fr 1fr; }
+  .bento-card.span-2 { grid-column:span 1; }
   .proceso-grid { grid-template-columns:1fr 1fr; }
   .testi-grid { grid-template-columns:1fr; }
-  .epocas-grid { grid-template-columns:1fr 1fr; }
+  .epocas-scroll { grid-template-columns:1fr 1fr; }
   .logos-grid { grid-template-columns:1fr 1fr; }
   .paleta-grid { grid-template-columns:repeat(4,1fr); }
   .tipo-grid { grid-template-columns:1fr; }
-  .sec { padding:var(--s-16) 32px; }
-  nav { padding:11px 24px; }
-  .nav-links,.nav-btn { display:none; }
+  .quienes-sec,.productos-sec,.proceso-sec,.testi-sec,.epocas-sec,.logos-sec,.paleta-sec,.pedidos-sec,.tipo-sec { padding:80px 24px; }
+  footer { padding:var(--space-12) 24px; }
 }
-@media(max-width:600px) {
-  .bento { grid-template-columns:1fr 1fr; grid-auto-rows:180px; }
-  .bento-a,.bento-b,.bento-c,.bento-d,.bento-e,.bento-f,.bento-g { grid-column:span 1; grid-row:span 1; }
-  .bento-a { grid-column:span 2; grid-row:span 2; }
+@media(max-width:540px) {
+  .bento-grid { grid-template-columns:1fr; }
   .proceso-grid { grid-template-columns:1fr; }
-  .epocas-grid { grid-template-columns:1fr; }
+  .epocas-scroll { grid-template-columns:1fr; }
   .logos-grid { grid-template-columns:1fr; }
   .paleta-grid { grid-template-columns:repeat(4,1fr); }
-  .stats { grid-template-columns:1fr 1fr; }
-  .sec { padding:var(--s-12) var(--s-5); }
+  .stats-grid { grid-template-columns:1fr 1fr; }
 }
+
+/* ══════════════════════════════════════════════════════
+   SVG VICUÑA (reutilizable vía <use>)
+══════════════════════════════════════════════════════ */
 </style>
 </head>
 <body>
 
-<!-- SVG defs ocultos — reutilizable en toda la página con <use> -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none;" aria-hidden="true">
+<!-- Vicuña SVG definitions (oculto) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" id="vicu-defs">
   <defs>
-    <symbol id="vicu" viewBox="0 0 477 523">
+    <symbol id="vicu-shape" viewBox="0 0 477 523">
       <g transform="translate(0,523) scale(0.1,-0.1)" stroke="none" fill-rule="evenodd">
         <path d="M2951 4865 c-32 -28 -48 -68 -81 -210 -64 -269 -86 -469 -76 -713 l6 -164 -37 6 c-21 3 -59 8 -85 12 -47 6 -48 7 -92 83 -71 123 -129 193 -283 338 -156 148 -232 242 -333 408 -93 154 -147 195 -216 162 -18 -9 -41 -31 -50 -49 -39 -76 -37 -266 6 -479 38 -186 89 -308 208 -498 36 -58 61 -106 56 -108 -32 -11 -145 -86 -226 -150 -51 -41 -145 -110 -209 -153 -154 -104 -156 -106 -247 -312 -34 -75 -24 -66 -377 -333 -302 -228 -349 -282 -349 -400 0 -46 6 -72 27 -113 l27 -52 -40 -108 c-49 -128 -56 -205 -23 -268 36 -70 120 -108 143 -65 8 15 5 33 -11 73 -21 54 -22 85 -3 231 4 33 2 54 -9 70 -14 22 -14 22 23 19 53 -5 76 10 96 65 34 93 60 108 157 92 64 -11 76 -10 105 5 19 10 36 15 39 12 9 -9 -53 -35 -123 -51 -86 -20 -139 -51 -197 -115 -64 -71 -89 -129 -94 -214 -4 -60 -1 -78 19 -116 58 -112 203 -136 396 -65 40 15 59 19 48 10 -11 -8 -55 -29 -98 -45 -68 -26 -90 -30 -181 -30 -88 0 -106 -3 -120 -18 -43 -48 -6 -124 92 -189 90 -61 183 -88 301 -88 84 1 104 5 175 34 127 53 131 54 483 40 l324 -13 19 -24 c32 -41 41 -90 46 -257 8 -246 -15 -619 -53 -858 -9 -54 -13 -109 -10 -122 l6 -25 866 0 c784 0 865 1 871 16 3 9 -4 71 -15 138 -29 166 -30 178 -47 546 -21 483 -26 636 -35 1190 -10 542 -14 584 -70 795 -33 125 -72 224 -133 340 l-43 80 22 85 c79 307 50 621 -90 967 -29 72 -77 175 -107 229 -84 152 -211 336 -248 361 -47 32 -110 31 -150 -2z m99 -65 c33 -17 200 -281 270 -425 127 -259 180 -472 180 -718 0 -151 -10 -223 -46 -355 l-26 -92 25 -39 c101 -153 187 -413 216 -651 6 -47 15 -362 21 -700 6 -338 12 -640 15 -670 2 -30 7 -134 10 -230 9 -276 24 -507 40 -607 8 -51 15 -97 15 -103 0 -7 -261 -10 -781 -10 -738 0 -780 1 -775 18 11 35 35 242 47 392 7 85 12 268 13 405 1 209 -2 260 -17 313 -9 35 -17 66 -17 68 0 2 24 4 53 4 123 0 297 40 441 101 247 105 449 339 499 576 11 52 10 56 -11 73 -33 27 -59 15 -77 -39 -9 -25 -28 -75 -42 -111 -105 -276 -397 -463 -774 -498 -65 -6 -206 -7 -374 -1 -528 17 -523 17 -668 -41 -40 -16 -94 -32 -122 -35 -96 -13 -258 42 -331 113 -46 45 -33 65 35 56 102 -13 281 58 438 174 106 79 121 106 74 131 -13 8 -34 -2 -91 -41 -147 -99 -272 -149 -381 -150 -86 -1 -135 22 -167 77 -30 52 -25 129 12 203 54 106 122 159 239 186 102 24 157 59 157 102 0 40 -25 50 -79 30 -39 -14 -66 -16 -137 -10 -83 6 -91 5 -118 -17 -16 -12 -39 -47 -52 -76 -14 -30 -30 -53 -39 -53 -22 0 -75 112 -75 159 0 83 58 139 462 444 215 161 237 186 283 311 36 99 65 130 203 224 64 44 164 117 222 162 59 47 144 102 194 126 49 24 91 46 94 48 2 3 -18 36 -45 73 -145 197 -227 373 -267 568 -40 196 -46 400 -12 433 14 14 17 14 35 -2 10 -10 43 -57 72 -104 124 -205 170 -259 402 -480 113 -108 169 -180 238 -308 l49 -91 88 -6 c48 -3 120 -13 160 -22 40 -9 75 -15 78 -13 2 3 -2 31 -8 64 -8 37 -12 151 -12 309 0 272 7 336 66 580 31 132 42 164 62 177 14 10 14 10 36 -2z m-2415 -2852 c-17 -75 -14 -126 11 -185 11 -28 11 -33 -1 -33 -23 0 -56 57 -62 108 -6 50 12 123 45 187 24 45 27 10 7 -77z"/>
         <path d="M3031 4616 c-52 -139 -81 -318 -81 -498 0 -148 12 -245 46 -383 38 -147 150 -425 173 -425 11 0 159 181 189 231 72 118 69 343 -8 579 -51 159 -258 550 -290 550 -5 0 -18 -24 -29 -54z m174 -281 c110 -226 149 -368 150 -555 0 -121 -1 -127 -32 -190 -34 -69 -124 -185 -143 -185 -24 0 -116 253 -151 413 -32 151 -37 375 -11 527 12 66 29 144 38 174 l16 55 34 -55 c19 -30 63 -112 99 -184z"/>
         <path d="M1898 3029 c-10 -5 -18 -17 -18 -25 0 -19 346 -880 366 -912 14 -22 19 -22 156 -20 l141 3 183 460 c101 253 184 463 184 467 0 4 -7 14 -16 22 -20 21 -241 23 -267 4 -13 -11 -108 -242 -202 -491 -10 -26 -21 -49 -25 -52 -3 -2 -53 114 -109 258 -57 144 -110 270 -119 280 -13 14 -33 17 -136 17 -67 0 -129 -5 -138 -11z m341 -391 c138 -350 147 -371 164 -365 7 2 43 82 80 178 164 419 190 484 197 492 4 4 32 7 63 5 l55 -3 -158 -395 -158 -395 -85 -3 c-62 -2 -86 1 -90 10 -3 7 -73 182 -157 388 -84 206 -154 381 -157 388 -4 9 12 12 59 12 l64 0 123 -312z"/>
       </g>
     </symbol>
-    <!-- Gradiente arco iris animado para hero -->
-    <linearGradient id="g-anim" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#D4500A"><animate attributeName="stop-color" values="#D4500A;#F0A500;#2E7D32;#7B3F9E;#D4500A" dur="5s" repeatCount="indefinite"/></stop>
-      <stop offset="33%"  stop-color="#F0A500"><animate attributeName="stop-color" values="#F0A500;#2E7D32;#7B3F9E;#C2185B;#F0A500" dur="5s" repeatCount="indefinite"/></stop>
-      <stop offset="66%"  stop-color="#2E7D32"><animate attributeName="stop-color" values="#2E7D32;#7B3F9E;#C2185B;#D4500A;#2E7D32" dur="5s" repeatCount="indefinite"/></stop>
-      <stop offset="100%" stop-color="#7B3F9E"><animate attributeName="stop-color" values="#7B3F9E;#C2185B;#D4500A;#F0A500;#7B3F9E" dur="5s" repeatCount="indefinite"/></stop>
-    </linearGradient>
   </defs>
 </svg>
 
-<!-- ── Rainbow stripe ─────────────────────────────────── -->
-<div class="rainbow" aria-hidden="true">
-  <span style="background:#D4500A;"></span>
-  <span style="background:#F0A500;"></span>
-  <span style="background:#2E7D32;"></span>
-  <span style="background:#7B3F9E;"></span>
-  <span style="background:#C2185B;"></span>
-  <span style="background:#003087;"></span>
-  <span style="background:#5C3317;"></span>
+<!-- ══════════════════════════════════════════════════════
+     RAINBOW STRIPE
+══════════════════════════════════════════════════════ -->
+<div class="rainbow-stripe" aria-hidden="true">
+  <div style="background:#D4500A;"></div>
+  <div style="background:#F0A500;"></div>
+  <div style="background:#2E7D32;"></div>
+  <div style="background:#7B3F9E;"></div>
+  <div style="background:#C2185B;"></div>
+  <div style="background:#003087;"></div>
+  <div style="background:#5C3317;"></div>
 </div>
 
-<!-- ── NAV ───────────────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════
+     NAV
+══════════════════════════════════════════════════════ -->
 <nav role="navigation" aria-label="Navegación principal">
-  <a class="nav-brand" href="#inicio" aria-label="VICUNIA — Inicio">
-    <svg class="nav-vicu" aria-hidden="true"><use href="#vicu" fill="#D4500A"/></svg>
-    <div class="nav-name">
+  <div class="nav-logo" aria-label="VICUNIA">
+    <svg class="nav-vicu" viewBox="0 0 477 523" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <use href="#vicu-shape" fill="#D4500A"/>
+    </svg>
+    <div class="nav-wordmark">
       <span style="color:#D4500A;">V</span><span style="color:#F0A500;">I</span><span style="color:#2E7D32;">C</span><span style="color:#7B3F9E;">U</span><span style="color:#C2185B;">N</span><span style="color:#003087;">I</span><span style="color:#5C3317;">A</span>
     </div>
-  </a>
-  <ul class="nav-links" role="list">
+  </div>
+  <ul class="nav-links">
     <li><a href="#quienes">NOSOTROS</a></li>
     <li><a href="#productos">PRODUCTOS</a></li>
     <li><a href="#proceso">PROCESO</a></li>
@@ -1300,350 +1310,362 @@ footer {
     <li><a href="#logos">LOGOS</a></li>
     <li><a href="#pedidos">PEDIDOS</a></li>
   </ul>
-  <a href="https://wa.me/51999999999?text=Hola%20VICUNIA!%20Quiero%20hacer%20un%20pedido." id="nav-wa" class="nav-btn" aria-label="Contactar VICUNIA por WhatsApp">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <a href="https://wa.me/51999999999?text=Hola%20VICUNIA!%20Quiero%20hacer%20un%20pedido." id="nav-wa-btn" class="nav-cta" aria-label="Contactar por WhatsApp">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     PEDIR AHORA
   </a>
 </nav>
 
-<!-- ══════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════
      HERO
-══════════════════════════════════════════════════ -->
-<section class="hero" id="inicio" aria-label="VICUNIA — Regalos Únicos desde Cajamarca">
+══════════════════════════════════════════════════════ -->
+<section class="hero" id="inicio" aria-label="Inicio — VICUNIA">
 
-  <div class="hero-left">
+  <!-- Orbs -->
+  <div class="orb orb-a" aria-hidden="true"></div>
+  <div class="orb orb-b" aria-hidden="true"></div>
+  <div class="orb orb-c" aria-hidden="true"></div>
+
+  <!-- Vicuña gigante flotante (derecha) -->
+  <div class="hero-vicu-wrap" aria-hidden="true">
+    <svg viewBox="0 0 477 523" width="340" height="373" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 20px 80px rgba(212,80,10,0.3));">
+      <defs>
+        <linearGradient id="g-hero-vicu" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"  stop-color="#D4500A"><animate attributeName="stop-color" values="#D4500A;#F0A500;#2E7D32;#7B3F9E;#D4500A" dur="5s" repeatCount="indefinite"/></stop>
+          <stop offset="50%" stop-color="#F0A500"><animate attributeName="stop-color" values="#F0A500;#2E7D32;#7B3F9E;#D4500A;#F0A500" dur="5s" repeatCount="indefinite"/></stop>
+          <stop offset="100%" stop-color="#7B3F9E"><animate attributeName="stop-color" values="#7B3F9E;#D4500A;#F0A500;#2E7D32;#7B3F9E" dur="5s" repeatCount="indefinite"/></stop>
+        </linearGradient>
+      </defs>
+      <use href="#vicu-shape" fill="url(#g-hero-vicu)"/>
+    </svg>
+  </div>
+
+  <!-- Vicuña fantasma de fondo -->
+  <svg class="hero-ghost-vicu" viewBox="0 0 477 523" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <use href="#vicu-shape" fill="white"/>
+  </svg>
+
+  <!-- Contenido -->
+  <div style="position:relative;z-index:2;max-width:680px;">
     <p class="hero-eyebrow">CAJAMARCA · PERÚ · 2025</p>
 
-    <h1 class="hero-title">
-      RE&shy;GA&shy;LOS<br>
-      <em class="hero-title-italic">únicos</em><br>
-      <span class="hero-title-accent">VI&shy;CU&shy;NIA</span>
-    </h1>
-
-    <p class="hero-tagline">
-      Artesanía cajamarquina que <strong>desafía lo genérico</strong>.<br>
-      Crochet · Impresión 3D · Flores · Amor hecho regalo.
-    </p>
-
-    <div class="hero-chips" role="list">
-      <span class="chip" style="color:#D4500A;" role="listitem">🧶 CROCHET</span>
-      <span class="chip" style="color:#F0A500;" role="listitem">🖨️ 3D</span>
-      <span class="chip" style="color:#2E7D32;" role="listitem">🌺 FLORES</span>
-      <span class="chip" style="color:#7B3F9E;" role="listitem">🎁 PEDIDOS</span>
-      <span class="chip" style="color:#C2185B;" role="listitem">✨ EDICIONES</span>
+    <div class="hero-display" aria-label="Regalos únicos">
+      <span class="hero-display-word" style="color:var(--queso);">REGALOS</span>
+      <span class="hero-display-word" style="color:var(--retama);"><em>únicos</em></span>
+      <span class="hero-display-word" style="color:var(--carnaval);">VICUNIA</span>
     </div>
 
-    <div class="hero-cta">
-      <a href="https://wa.me/51999999999?text=Hola%20VICUNIA!%20Quiero%20hacer%20un%20pedido." id="hero-wa-btn" class="btn-primary">
+    <div class="hero-meta">
+      <p class="hero-tagline">
+        Artesanía cajamarquina que <strong>desafía lo genérico</strong>.<br>
+        Crochet · Impresión 3D · Flores · Amor hecho regalo.
+      </p>
+      <div class="hero-chips" role="list">
+        <span class="chip" style="color:var(--carnaval);border-color:var(--carnaval);" role="listitem">🧶 CROCHET</span>
+        <span class="chip" style="color:var(--retama);border-color:var(--retama);" role="listitem">🖨️ 3D</span>
+        <span class="chip" style="color:var(--jalca);border-color:var(--jalca);" role="listitem">🌺 FLORES</span>
+        <span class="chip" style="color:var(--morado);border-color:var(--morado);" role="listitem">🎁 PEDIDOS</span>
+        <span class="chip" style="color:var(--rosa);border-color:var(--rosa);" role="listitem">✨ EDICIONES</span>
+      </div>
+    </div>
+
+    <div class="hero-cta-row">
+      <a href="https://wa.me/51999999999?text=Hola%20VICUNIA!%20Quiero%20hacer%20un%20pedido." class="btn-primary" id="hero-wa-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         HACER PEDIDO
       </a>
-      <a href="#quienes" id="hero-explore-btn" class="btn-outline">EXPLORAR ↓</a>
-    </div>
-  </div>
-
-  <!-- Vicuña derecha — gradiente arco iris animado -->
-  <div class="hero-right">
-    <div class="hero-vicu-wrap" aria-hidden="true">
-      <div class="hero-vicu-glow"></div>
-      <svg viewBox="0 0 477 523" width="360" height="396" xmlns="http://www.w3.org/2000/svg">
-        <use href="#vicu" fill="url(#g-anim)"/>
-      </svg>
+      <a href="#quienes" class="btn-ghost" id="hero-know-btn">VER MÁS ↓</a>
     </div>
   </div>
 
   <div class="scroll-hint" aria-hidden="true">
-    <span class="scroll-hint-text">SCROLL</span>
-    <div class="scroll-hint-line"></div>
+    <span>EXPLORAR</span>
+    <div class="scroll-line"></div>
   </div>
 </section>
 
-<!-- MARQUEE 1 — Carnaval -->
-<div class="marquee" style="background:var(--carnaval);" aria-hidden="true">
-  <div class="marquee-inner" style="color:var(--queso);">
-    <span class="marquee-item">CROCHET ARTESANAL <span class="marquee-sep"></span></span>
-    <span class="marquee-item">IMPRESIÓN 3D <span class="marquee-sep"></span></span>
-    <span class="marquee-item">FLORES PERSONALIZADAS <span class="marquee-sep"></span></span>
-    <span class="marquee-item">AMIGURUMIS <span class="marquee-sep"></span></span>
-    <span class="marquee-item">LLAVEROS ÚNICOS <span class="marquee-sep"></span></span>
-    <span class="marquee-item">RAMOS ARTESANALES <span class="marquee-sep"></span></span>
-    <span class="marquee-item">CAJAMARCA · PERÚ <span class="marquee-sep"></span></span>
-    <span class="marquee-item">CROCHET ARTESANAL <span class="marquee-sep"></span></span>
-    <span class="marquee-item">IMPRESIÓN 3D <span class="marquee-sep"></span></span>
-    <span class="marquee-item">FLORES PERSONALIZADAS <span class="marquee-sep"></span></span>
-    <span class="marquee-item">AMIGURUMIS <span class="marquee-sep"></span></span>
-    <span class="marquee-item">LLAVEROS ÚNICOS <span class="marquee-sep"></span></span>
-    <span class="marquee-item">RAMOS ARTESANALES <span class="marquee-sep"></span></span>
-    <span class="marquee-item">CAJAMARCA · PERÚ <span class="marquee-sep"></span></span>
+<!-- MARQUEE 1 -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track" id="mq1">
+    <!-- doubled for seamless loop -->
+    <span class="marquee-item">CROCHET ARTESANAL <span class="marquee-dot"></span></span>
+    <span class="marquee-item">IMPRESIÓN 3D <span class="marquee-dot"></span></span>
+    <span class="marquee-item">FLORES PERSONALIZADAS <span class="marquee-dot"></span></span>
+    <span class="marquee-item">AMIGURUMIS <span class="marquee-dot"></span></span>
+    <span class="marquee-item">LLAVEROS ÚNICOS <span class="marquee-dot"></span></span>
+    <span class="marquee-item">RAMOS DE CROCHET <span class="marquee-dot"></span></span>
+    <span class="marquee-item">EDICIONES ESPECIALES <span class="marquee-dot"></span></span>
+    <span class="marquee-item">CAJAMARCA · PERÚ <span class="marquee-dot"></span></span>
+    <span class="marquee-item">CROCHET ARTESANAL <span class="marquee-dot"></span></span>
+    <span class="marquee-item">IMPRESIÓN 3D <span class="marquee-dot"></span></span>
+    <span class="marquee-item">FLORES PERSONALIZADAS <span class="marquee-dot"></span></span>
+    <span class="marquee-item">AMIGURUMIS <span class="marquee-dot"></span></span>
+    <span class="marquee-item">LLAVEROS ÚNICOS <span class="marquee-dot"></span></span>
+    <span class="marquee-item">RAMOS DE CROCHET <span class="marquee-dot"></span></span>
+    <span class="marquee-item">EDICIONES ESPECIALES <span class="marquee-dot"></span></span>
+    <span class="marquee-item">CAJAMARCA · PERÚ <span class="marquee-dot"></span></span>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════
      QUIÉNES SOMOS
-══════════════════════════════════════════════════ -->
-<section class="quienes-sec sec" id="quienes" aria-label="Quiénes somos">
-  <div class="sec-inner">
-    <div class="sec-header">
-      <p class="sec-num text-label reveal">01 — QUIÉNES SOMOS</p>
-      <h2 class="sec-title reveal" style="margin-top:.5rem;">
-        Nacemos del<br>
-        <span class="sec-title-em" style="color:var(--retama);">carnaval</span>,<br>
-        vivimos en<br>tus manos.
+══════════════════════════════════════════════════════ -->
+<section class="quienes-sec" id="quienes" aria-label="Quiénes somos">
+  <div class="quienes-inner">
+    <div class="quienes-left">
+      <p class="brand-label reveal" style="color:var(--retama);">01 — QUIÉNES SOMOS</p>
+      <h2 class="quienes-tagline reveal">
+        Nacemos del<br><em>carnaval</em>,<br>vivimos en<br>tus manos.
       </h2>
-    </div>
-    <div class="quienes-grid">
-      <div>
-        <p class="quienes-body reveal">
-          <strong>VICUNIA</strong> es una marca cajamarquina nacida de dos emprendedoras con alma artesana. Fusionamos el <strong>crochet</strong> milenario con tecnología de <strong>impresión 3D</strong> para crear objetos que ninguna tienda tiene.<br><br>
-          Cada pieza cuenta una historia. Cada regalo lleva el espíritu de Cajamarca: colores del carnaval, texturas de la jalca, calidez del barro.
-        </p>
-        <div class="stats reveal">
-          <div class="stat">
-            <div class="stat-n" style="color:var(--carnaval);">500+</div>
-            <div class="stat-l">Pedidos entregados con amor</div>
-          </div>
-          <div class="stat">
-            <div class="stat-n" style="color:var(--retama);">100%</div>
-            <div class="stat-l">Cajamarquinas orgullosas</div>
-          </div>
-          <div class="stat">
-            <div class="stat-n" style="color:var(--jalca);">7</div>
-            <div class="stat-l">Colores de identidad propia</div>
-          </div>
-          <div class="stat">
-            <div class="stat-n" style="color:var(--morado);">∞</div>
-            <div class="stat-l">Posibilidades de personalización</div>
-          </div>
+      <p class="quienes-body reveal">
+        <strong>VICUNIA</strong> es una marca cajamarquina nacida de dos emprendedoras con alma artesana. Fusionamos el <strong>crochet</strong> milenario con tecnología de <strong>impresión 3D</strong> para crear objetos que ninguna tienda tiene.<br><br>
+        Cada pieza cuenta una historia. Cada regalo lleva el espíritu de Cajamarca: colores del carnaval, texturas de la jalca, calidez del barro.
+      </p>
+      <div class="stats-grid reveal">
+        <div class="stat-block">
+          <div class="stat-num" style="color:var(--carnaval);">500+</div>
+          <div class="stat-label">Pedidos entregados con amor</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num" style="color:var(--retama);">100%</div>
+          <div class="stat-label">Cajamarquinas orgullosas</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num" style="color:var(--jalca);">7</div>
+          <div class="stat-label">Colores de identidad propia</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num" style="color:var(--morado);">∞</div>
+          <div class="stat-label">Posibilidades de personalización</div>
         </div>
       </div>
-      <div>
-        <p class="text-label-line reveal" style="color:var(--retama);margin-bottom:1.5rem;">NUESTROS VALORES</p>
-        <div class="valores">
-          <div class="valor reveal">
-            <div class="valor-icon">🧶</div>
-            <div>
-              <p class="valor-title" style="color:var(--carnaval);">ARTESANÍA REAL</p>
-              <p class="valor-desc">Cada punto es intencional. No hay producción en masa: todo hecho a mano, con cuidado.</p>
-            </div>
-          </div>
-          <div class="valor reveal">
-            <div class="valor-icon">🌿</div>
-            <div>
-              <p class="valor-title" style="color:var(--jalca);">RAÍCES ANDINAS</p>
-              <p class="valor-desc">Paleta, diseños y espíritu del carnaval cajamarquino y la jalca verde.</p>
-            </div>
-          </div>
-          <div class="valor reveal">
-            <div class="valor-icon">💜</div>
-            <div>
-              <p class="valor-title" style="color:var(--morado);">AMOR EN CADA PIEZA</p>
-              <p class="valor-desc">No hacemos regalos genéricos. Cada pedido pensado para quien lo recibe.</p>
-            </div>
-          </div>
-          <div class="valor reveal">
-            <div class="valor-icon">⚡</div>
-            <div>
-              <p class="valor-title" style="color:var(--retama);">INNOVACIÓN CONSTANTE</p>
-              <p class="valor-desc">La impresión 3D + el crochet juntos crean lo que ninguna tienda tiene.</p>
-            </div>
-          </div>
+    </div>
+    <div class="quienes-right">
+      <p class="brand-label reveal" style="color:var(--retama);">NUESTROS VALORES</p>
+      <div class="valor-row reveal">
+        <div class="valor-icon">🧶</div>
+        <div class="valor-text">
+          <strong style="color:var(--carnaval);">ARTESANÍA REAL</strong>
+          <span>Cada punto de crochet es intencional. No hay producción en masa: todo se hace a mano, con cuidado y tiempo.</span>
+        </div>
+      </div>
+      <div class="valor-row reveal">
+        <div class="valor-icon">🌿</div>
+        <div class="valor-text">
+          <strong style="color:var(--jalca);">RAÍCES ANDINAS</strong>
+          <span>Nuestra paleta, nuestros diseños y nuestro espíritu vienen del carnaval cajamarquino y la jalca verde.</span>
+        </div>
+      </div>
+      <div class="valor-row reveal">
+        <div class="valor-icon">💜</div>
+        <div class="valor-text">
+          <strong style="color:var(--morado);">AMOR EN CADA PIEZA</strong>
+          <span>No hacemos regalos genéricos. Cada pedido es pensado para la persona que lo va a recibir.</span>
+        </div>
+      </div>
+      <div class="valor-row reveal">
+        <div class="valor-icon">⚡</div>
+        <div class="valor-text">
+          <strong style="color:var(--retama);">INNOVACIÓN CONSTANTE</strong>
+          <span>La impresión 3D nos permite crear lo que el crochet no puede. Juntos, son imparables.</span>
+        </div>
+      </div>
+      <div class="valor-row reveal">
+        <div class="valor-icon">🎁</div>
+        <div class="valor-text">
+          <strong style="color:var(--rosa);">PERSONALIZACIÓN TOTAL</strong>
+          <span>Tu regalo, tu historia. Colores, nombres, fechas, personajes: lo que imagines, lo creamos.</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════
      PRODUCTOS — Bento Grid
-══════════════════════════════════════════════════ -->
-<section class="productos-sec sec" id="productos" aria-label="Productos de VICUNIA">
-  <div class="sec-inner">
+══════════════════════════════════════════════════════ -->
+<section class="productos-sec" id="productos" aria-label="Nuestros productos">
+  <div class="productos-inner">
     <div class="sec-header">
-      <p class="sec-num text-label reveal" style="color:var(--retama);">02 — PRODUCTOS</p>
-      <h2 class="sec-title reveal" style="margin-top:.5rem;">
-        Lo que <span class="sec-title-em" style="color:var(--retama);">hacemos</span><br>con amor
+      <p class="sec-counter brand-label reveal" style="color:var(--retama);">02 — PRODUCTOS</p>
+      <h2 class="brand-title reveal" style="font-size:clamp(2.5rem,6vw,5rem);margin-top:var(--space-3);">
+        Lo que<br><span class="italic-accent" style="color:var(--retama);">hacemos</span> con amor
       </h2>
     </div>
-    <div class="bento reveal">
+    <div class="bento-grid">
 
-      <!-- A: Amigurumis — hero grande -->
-      <div class="bcard bento-a" role="button" tabindex="0" aria-label="Amigurumis — hacer pedido por WhatsApp">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/crochet_amigurumis_1780824164068.png" alt="Amigurumis de crochet hechos a mano por VICUNIA" loading="lazy">
-        <div class="bcard-overlay"></div>
-        <div class="bcard-body">
-          <span class="bcard-tag" style="background:var(--carnaval);color:var(--queso);">🧶 CROCHET</span>
-          <p class="bcard-name">Amigurumis</p>
-          <p class="bcard-desc">Personajes únicos tejidos a mano. Tu mascota, personaje o diseño propio.</p>
+      <!-- CARD 1: Amigurumis — grande -->
+      <div class="bento-card tall reveal" style="grid-column:span 1;">
+        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/crochet_amigurumis_1780824164068.png" alt="Amigurumis de crochet VICUNIA" class="bento-img" loading="lazy">
+        <div class="bento-overlay"></div>
+        <div class="bento-cta" aria-label="Pedir amigurumi">💬</div>
+        <div class="bento-content">
+          <span class="bento-tag" style="background:var(--carnaval);color:var(--queso);">🧶 CROCHET</span>
+          <div class="bento-name">Amigurumis</div>
+          <div class="bento-desc">Personajes únicos tejidos a mano. Tu mascota, personaje favorito o diseño propio.</div>
         </div>
       </div>
 
-      <!-- B: Flores — wide -->
-      <div class="bcard bento-b" role="button" tabindex="0" aria-label="Flores y ramos — hacer pedido">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/flores_crochet_1780824188547.png" alt="Flores artesanales de crochet VICUNIA" loading="lazy" style="object-position:center 30%;">
-        <div class="bcard-overlay"></div>
-        <div class="bcard-body">
-          <span class="bcard-tag" style="background:var(--jalca);color:var(--queso);">🌺 FLORES</span>
-          <p class="bcard-name">Flores & Ramos</p>
-          <p class="bcard-desc">Flores que nunca mueren. Ramos personalizados para cada ocasión.</p>
+      <!-- CARD 2: Flores — span 2, corto -->
+      <div class="bento-card span-2 short reveal" style="position:relative;background:var(--jalca);">
+        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/flores_crochet_1780824188547.png" alt="Flores de crochet VICUNIA" class="bento-img" loading="lazy" style="object-position:center 30%;">
+        <div class="bento-overlay"></div>
+        <div class="bento-cta" aria-label="Pedir flores">💬</div>
+        <div class="bento-content">
+          <span class="bento-tag" style="background:var(--jalca);color:var(--queso);">🌺 FLORES</span>
+          <div class="bento-name">Flores & Ramos Artesanales</div>
+          <div class="bento-desc">Flores que nunca mueren. Ramos personalizados para cualquier ocasión especial.</div>
         </div>
       </div>
 
-      <!-- C: 3D -->
-      <div class="bcard bento-c" role="button" tabindex="0" aria-label="Llaveros 3D — hacer pedido">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/impresion_3d_llaveros_1780824176214.png" alt="Llaveros de impresión 3D personalizados VICUNIA" loading="lazy">
-        <div class="bcard-overlay"></div>
-        <div class="bcard-body">
-          <span class="bcard-tag" style="background:var(--azul);color:var(--queso);">🖨️ 3D</span>
-          <p class="bcard-name">Llaveros 3D</p>
+      <!-- CARD 3: Impresión 3D — corto -->
+      <div class="bento-card short reveal">
+        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/impresion_3d_llaveros_1780824176214.png" alt="Llaveros de impresión 3D VICUNIA" class="bento-img" loading="lazy">
+        <div class="bento-overlay"></div>
+        <div class="bento-cta" aria-label="Pedir llavero 3D">💬</div>
+        <div class="bento-content">
+          <span class="bento-tag" style="background:var(--azul);color:var(--queso);">🖨️ IMPRESIÓN 3D</span>
+          <div class="bento-name">Llaveros 3D</div>
+          <div class="bento-desc">Personalizados con nombres, figuras y colores únicos.</div>
         </div>
       </div>
 
-      <!-- D: Ropa -->
-      <div class="bcard bento-d" role="button" tabindex="0" aria-label="Ropa de crochet — hacer pedido">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/ropa_crochet_1780824209085.png" alt="Ropa de crochet artesanal VICUNIA" loading="lazy">
-        <div class="bcard-overlay"></div>
-        <div class="bcard-body">
-          <span class="bcard-tag" style="background:var(--morado);color:var(--queso);">👗 ROPA</span>
-          <p class="bcard-name">Crochet Wear</p>
+      <!-- CARD 4: Ropa — corto -->
+      <div class="bento-card short reveal">
+        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/ropa_crochet_1780824209085.png" alt="Ropa de crochet VICUNIA" class="bento-img" loading="lazy">
+        <div class="bento-overlay"></div>
+        <div class="bento-cta" aria-label="Pedir ropa crochet">💬</div>
+        <div class="bento-content">
+          <span class="bento-tag" style="background:var(--morado);color:var(--queso);">👗 ROPA</span>
+          <div class="bento-name">Ropa de Crochet</div>
+          <div class="bento-desc">Accesorios y prendas tejidas: únicos, calientes y llenos de color.</div>
         </div>
       </div>
 
-      <!-- E: Mundial -->
-      <div class="bcard bento-e" role="button" tabindex="0" aria-label="Ediciones especiales — hacer pedido">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/mundial_copa_1780824221396.png" alt="Ediciones especiales Copa del Mundo VICUNIA" loading="lazy">
-        <div class="bcard-overlay"></div>
-        <div class="bcard-body">
-          <span class="bcard-tag" style="background:var(--jalca);color:var(--queso);">⚽ EDICIÓN</span>
-          <p class="bcard-name">Ediciones Especiales</p>
+      <!-- CARD 5: Mundial/Ediciones — corto -->
+      <div class="bento-card short reveal">
+        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/mundial_copa_1780824221396.png" alt="Ediciones especiales Copa del Mundo" class="bento-img" loading="lazy">
+        <div class="bento-overlay"></div>
+        <div class="bento-cta" aria-label="Ver ediciones especiales">💬</div>
+        <div class="bento-content">
+          <span class="bento-tag" style="background:var(--jalca);color:var(--queso);">⚽ EDICIÓN ESPECIAL</span>
+          <div class="bento-name">Ediciones del Momento</div>
+          <div class="bento-desc">Copa del Mundial, fechas especiales, tendencias. VICUNIA siempre al día.</div>
         </div>
       </div>
 
-      <!-- F: Regalos -->
-      <div class="bcard bento-f" role="button" tabindex="0" aria-label="Regalos personalizados — hacer pedido">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/regalos_personalizados_1780824233818.png" alt="Regalos personalizados VICUNIA" loading="lazy">
-        <div class="bcard-overlay"></div>
-        <div class="bcard-body">
-          <span class="bcard-tag" style="background:var(--rosa);color:var(--queso);">🎁 REGALO</span>
-          <p class="bcard-name">Regalos Personalizados</p>
+      <!-- CARD 6: Regalos — span 2 corto -->
+      <div class="bento-card span-2 short reveal">
+        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/regalos_personalizados_1780824233818.png" alt="Regalos personalizados VICUNIA" class="bento-img" loading="lazy">
+        <div class="bento-overlay"></div>
+        <div class="bento-cta" aria-label="Pedir regalo personalizado">💬</div>
+        <div class="bento-content">
+          <span class="bento-tag" style="background:var(--rosa);color:var(--queso);">🎁 REGALOS</span>
+          <div class="bento-name">Regalos Personalizados</div>
+          <div class="bento-desc">Cajas regalo, combos y paquetes armados especialmente para la persona que quieres sorprender.</div>
         </div>
-      </div>
-
-      <!-- G: CTA Card — color sólido -->
-      <div class="bcard bento-g bcard-cta" aria-label="Hacer pedido por WhatsApp">
-        <div class="bcard-cta-icon" aria-hidden="true">💬</div>
-        <div class="bcard-cta-text">¿Tienes una<br>idea en mente?</div>
-        <div class="bcard-cta-sub">Cuéntanos</div>
-        <a href="https://wa.me/51999999999?text=Hola%20VICUNIA!%20Quiero%20hacer%20un%20pedido." id="bento-wa-btn" class="bcard-cta-btn" aria-label="Contactar VICUNIA por WhatsApp">WHATSAPP ↗</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- MARQUEE 2 — Barro -->
-<div class="marquee" style="background:var(--barro);" aria-hidden="true">
-  <div class="marquee-inner rev" style="color:var(--queso);">
-    <span class="marquee-item">HECHO A MANO <span class="marquee-sep"></span></span>
-    <span class="marquee-item">CON AMOR CAJAMARQUINO <span class="marquee-sep"></span></span>
-    <span class="marquee-item">CADA PIEZA ES ÚNICA <span class="marquee-sep"></span></span>
-    <span class="marquee-item">REGALOS QUE ENAMORAN <span class="marquee-sep"></span></span>
-    <span class="marquee-item">ARTESANÍA + TECNOLOGÍA <span class="marquee-sep"></span></span>
-    <span class="marquee-item">PEDIDOS POR WHATSAPP <span class="marquee-sep"></span></span>
-    <span class="marquee-item">HECHO A MANO <span class="marquee-sep"></span></span>
-    <span class="marquee-item">CON AMOR CAJAMARQUINO <span class="marquee-sep"></span></span>
-    <span class="marquee-item">CADA PIEZA ES ÚNICA <span class="marquee-sep"></span></span>
-    <span class="marquee-item">REGALOS QUE ENAMORAN <span class="marquee-sep"></span></span>
-    <span class="marquee-item">ARTESANÍA + TECNOLOGÍA <span class="marquee-sep"></span></span>
-    <span class="marquee-item">PEDIDOS POR WHATSAPP <span class="marquee-sep"></span></span>
+<!-- MARQUEE 2 -->
+<div class="marquee-strip-2" aria-hidden="true">
+  <div class="marquee-track" style="animation:marquee-rev 28s linear infinite;background:transparent;">
+    <span class="marquee-item">HECHO A MANO <span class="marquee-dot"></span></span>
+    <span class="marquee-item">CON AMOR CAJAMARQUINO <span class="marquee-dot"></span></span>
+    <span class="marquee-item">CADA PIEZA ES ÚNICA <span class="marquee-dot"></span></span>
+    <span class="marquee-item">REGALOS QUE ENAMORAN <span class="marquee-dot"></span></span>
+    <span class="marquee-item">ARTESANÍA + TECNOLOGÍA <span class="marquee-dot"></span></span>
+    <span class="marquee-item">PEDIDOS POR WHATSAPP <span class="marquee-dot"></span></span>
+    <span class="marquee-item">HECHO A MANO <span class="marquee-dot"></span></span>
+    <span class="marquee-item">CON AMOR CAJAMARQUINO <span class="marquee-dot"></span></span>
+    <span class="marquee-item">CADA PIEZA ES ÚNICA <span class="marquee-dot"></span></span>
+    <span class="marquee-item">REGALOS QUE ENAMORAN <span class="marquee-dot"></span></span>
+    <span class="marquee-item">ARTESANÍA + TECNOLOGÍA <span class="marquee-dot"></span></span>
+    <span class="marquee-item">PEDIDOS POR WHATSAPP <span class="marquee-dot"></span></span>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════
-     PROCESO — fondo claro, contraste máximo
-══════════════════════════════════════════════════ -->
-<section class="proceso-sec sec" id="proceso" aria-label="Proceso de pedido VICUNIA">
-  <div class="sec-inner">
-    <p class="sec-num text-label reveal" style="color:var(--barro);">03 — CÓMO FUNCIONA</p>
-    <h2 class="sec-title reveal" style="margin-top:.5rem;color:var(--espresso);">
-      Tu regalo en<br>
-      <span class="sec-title-em" style="color:var(--carnaval);">4 pasos</span>
+<!-- ══════════════════════════════════════════════════════
+     PROCESO
+══════════════════════════════════════════════════════ -->
+<section class="proceso-sec" id="proceso" aria-label="Nuestro proceso">
+  <div class="proceso-inner">
+    <p class="brand-label reveal" style="color:var(--barro);">03 — CÓMO FUNCIONA</p>
+    <h2 class="brand-title reveal" style="font-size:clamp(2.5rem,6vw,5rem);margin-top:var(--space-3);color:var(--espresso);">
+      Tu regalo en<br><span class="italic-accent" style="color:var(--carnaval);">4 pasos</span>
     </h2>
     <div class="proceso-grid">
-      <div class="paso reveal">
-        <div class="paso-bg-num">01</div>
+      <div class="proceso-step reveal">
+        <div class="paso-num">01</div>
         <div class="paso-icon">💬</div>
-        <p class="paso-title">CUÉNTANOS</p>
-        <p class="paso-body">Escríbenos por WhatsApp con tu idea, la ocasión y para quién es el regalo.</p>
-        <div class="paso-bar" style="background:var(--carnaval);"></div>
+        <div class="paso-title">CUÉNTANOS</div>
+        <div class="paso-body">Escríbenos por WhatsApp con tu idea, la ocasión y para quién es el regalo.</div>
       </div>
-      <div class="paso reveal">
-        <div class="paso-bg-num">02</div>
+      <div class="proceso-step reveal">
+        <div class="paso-num">02</div>
         <div class="paso-icon">✏️</div>
-        <p class="paso-title">DISEÑAMOS</p>
-        <p class="paso-body">Creamos una propuesta personalizada: colores, materiales y detalles únicos para ti.</p>
-        <div class="paso-bar" style="background:var(--retama);"></div>
+        <div class="paso-title">DISEÑAMOS</div>
+        <div class="paso-body">Creamos una propuesta personalizada con colores, materiales y detalles únicos para ti.</div>
       </div>
-      <div class="paso reveal">
-        <div class="paso-bg-num">03</div>
+      <div class="proceso-step reveal">
+        <div class="paso-num">03</div>
         <div class="paso-icon">🧶</div>
-        <p class="paso-title">CREAMOS</p>
-        <p class="paso-body">Tejemos, imprimimos o armamos tu pedido con toda la dedicación artesanal.</p>
-        <div class="paso-bar" style="background:var(--jalca);"></div>
+        <div class="paso-title">CREAMOS</div>
+        <div class="paso-body">Tejemos, imprimimos o armamos tu pedido con toda la dedicación artesanal de VICUNIA.</div>
       </div>
-      <div class="paso reveal">
-        <div class="paso-bg-num">04</div>
+      <div class="proceso-step reveal">
+        <div class="paso-num">04</div>
         <div class="paso-icon">🎁</div>
-        <p class="paso-title">ENTREGAMOS</p>
-        <p class="paso-body">Empacamos con amor y lo llevamos hasta ti, listo para sorprender.</p>
-        <div class="paso-bar" style="background:var(--morado);"></div>
+        <div class="paso-title">ENTREGAMOS</div>
+        <div class="paso-body">Empacamos con amor y lo llevamos hasta ti, listo para sorprender a alguien especial.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════
      TESTIMONIOS
-══════════════════════════════════════════════════ -->
-<section class="testi-sec sec" id="testimonios" aria-label="Testimonios de clientes VICUNIA">
-  <div class="sec-inner">
-    <p class="sec-num text-label reveal" style="color:var(--retama);">04 — CLIENTES FELICES</p>
-    <h2 class="sec-title reveal" style="margin-top:.5rem;">
-      Ellas ya lo<br><span class="sec-title-em" style="color:var(--retama);">vivieron</span>
+══════════════════════════════════════════════════════ -->
+<section class="testi-sec" id="testimonios" aria-label="Testimonios de clientes">
+  <div class="testi-inner">
+    <p class="brand-label reveal" style="color:var(--retama);">04 — CLIENTES FELICES</p>
+    <h2 class="brand-title reveal" style="font-size:clamp(2.5rem,6vw,5rem);margin-top:var(--space-3);">
+      Ellas ya lo<br><span class="italic-accent" style="color:var(--retama);">vivieron</span>
     </h2>
     <div class="testi-grid">
       <div class="testi-card reveal">
-        <div class="testi-stars" aria-label="5 estrellas">★★★★★</div>
-        <span class="testi-open-quote" aria-hidden="true">"</span>
-        <p class="testi-text">Le regalé un amigurumi de su perrita a mi mamá y lloró de emoción. VICUNIA capturó cada detalle perfectamente.</p>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">Le regalé un amigurumi de su perrita a mi mamá y lloró de emoción. VICUNIA capturó cada detalle perfectamente.</div>
         <div class="testi-author">
-          <div class="testi-av" style="background:var(--carnaval);" aria-hidden="true">M</div>
+          <div class="testi-avatar" style="background:var(--carnaval);">M</div>
           <div>
-            <p class="testi-name">Mariana R.</p>
-            <p class="testi-city">CAJAMARCA</p>
+            <div class="testi-name">Mariana R.</div>
+            <div class="testi-city">CAJAMARCA</div>
           </div>
         </div>
       </div>
       <div class="testi-card reveal">
-        <div class="testi-stars" aria-label="5 estrellas">★★★★★</div>
-        <span class="testi-open-quote" aria-hidden="true">"</span>
-        <p class="testi-text">Los llaveros 3D para mi promoción quedaron increíbles. Todos preguntaron dónde los conseguí.</p>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">Los llaveros 3D para mi promoción quedaron increíbles. Todos mis compañeros preguntaron dónde los conseguí.</div>
         <div class="testi-author">
-          <div class="testi-av" style="background:var(--jalca);" aria-hidden="true">C</div>
+          <div class="testi-avatar" style="background:var(--jalca);">C</div>
           <div>
-            <p class="testi-name">Carlos T.</p>
-            <p class="testi-city">CAJAMARCA</p>
+            <div class="testi-name">Carlos T.</div>
+            <div class="testi-city">CAJAMARCA</div>
           </div>
         </div>
       </div>
       <div class="testi-card reveal">
-        <div class="testi-stars" aria-label="5 estrellas">★★★★★</div>
-        <span class="testi-open-quote" aria-hidden="true">"</span>
-        <p class="testi-text">El ramo de flores de crochet para el Día de la Madre fue el regalo más bonito que di. Calidad y amor en cada detalle.</p>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">El ramo de flores de crochet para el Día de la Madre fue el regalo más bonito que di en mi vida. Calidad y amor en cada detalle.</div>
         <div class="testi-author">
-          <div class="testi-av" style="background:var(--morado);" aria-hidden="true">L</div>
+          <div class="testi-avatar" style="background:var(--morado);">L</div>
           <div>
-            <p class="testi-name">Lucía P.</p>
-            <p class="testi-city">LIMA · cliente remoto</p>
+            <div class="testi-name">Lucía P.</div>
+            <div class="testi-city">LIMA · cliente remoto</div>
           </div>
         </div>
       </div>
@@ -1651,92 +1673,101 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     ÉPOCAS
-══════════════════════════════════════════════════ -->
-<section class="epocas-sec sec" id="epocas" aria-label="Temporadas de VICUNIA">
-  <div class="sec-inner">
-    <p class="sec-num text-label reveal" style="color:var(--retama);">05 — TEMPORADAS</p>
-    <h2 class="sec-title reveal" style="margin-top:.5rem;">
-      VICUNIA en<br><span class="sec-title-em" style="color:var(--retama);">cada época</span>
+<!-- ══════════════════════════════════════════════════════
+     ÉPOCAS / TEMPORADAS
+══════════════════════════════════════════════════════ -->
+<section class="epocas-sec" id="epocas" aria-label="Temporadas de VICUNIA">
+  <div class="epocas-inner">
+    <p class="brand-label reveal" style="color:var(--retama);">05 — TEMPORADAS</p>
+    <h2 class="brand-title reveal" style="font-size:clamp(2.5rem,6vw,5rem);margin-top:var(--space-3);">
+      VICUNIA en<br><span class="italic-accent" style="color:var(--retama);">cada época</span>
     </h2>
-    <div class="epocas-grid">
+    <div class="epocas-scroll">
 
-      <article class="eca reveal">
-        <div class="eca-head" style="background:linear-gradient(135deg,#D4500A,#F0A500);">
-          <svg class="eca-bg-vicu" viewBox="0 0 477 523" width="100" height="110" aria-hidden="true"><use href="#vicu" fill="white"/></svg>
-          <p class="eca-brand" style="color:#fff;">VICUNIA</p>
-          <p class="eca-sub" style="color:rgba(255,255,255,.75);">REGALOS ÚNICOS</p>
+      <!-- Carnaval -->
+      <article class="epoca-card reveal">
+        <div class="epoca-head" style="background:linear-gradient(135deg,#D4500A,#F0A500);">
+          <svg class="epoca-vicu" viewBox="0 0 477 523" width="110" height="121" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#vicu-shape" fill="white"/></svg>
+          <div class="epoca-brand" style="color:#fff;">VICUNIA</div>
+          <div class="epoca-sub" style="color:rgba(255,255,255,.75);">REGALOS ÚNICOS</div>
         </div>
-        <div class="eca-body">
-          <p class="eca-nombre" style="color:var(--carnaval);">🎭 CARNAVAL CAJAMARQUINO</p>
-          <p class="eca-desc">El naranja y amarillo del carnaval. La fiesta más grande de Cajamarca merece los mejores regalos.</p>
-          <div class="eca-tags"><span class="etag">FEBRERO</span><span class="etag">CARNAVAL</span></div>
+        <div class="epoca-body">
+          <p class="epoca-nombre" style="color:var(--carnaval);">🎭 CARNAVAL CAJAMARQUINO</p>
+          <p class="epoca-desc">El naranja y amarillo del carnaval. La fiesta más grande de Cajamarca merece los mejores regalos.</p>
+          <div class="epoca-tags"><span class="etag">FEBRERO</span><span class="etag">CARNAVAL</span><span class="etag">VERANO</span></div>
         </div>
       </article>
 
-      <article class="eca reveal">
-        <div class="eca-head" style="background:linear-gradient(135deg,#7B3F9E,#C2185B);">
-          <svg class="eca-bg-vicu" viewBox="0 0 477 523" width="100" height="110" aria-hidden="true"><use href="#vicu" fill="white"/></svg>
-          <p class="eca-brand" style="color:#fff;">VICUNIA</p>
-          <p class="eca-sub" style="color:rgba(255,255,255,.75);">REGALOS ÚNICOS</p>
+      <!-- Día de la Madre -->
+      <article class="epoca-card reveal">
+        <div class="epoca-head" style="background:linear-gradient(135deg,#7B3F9E,#C2185B);">
+          <svg class="epoca-vicu" viewBox="0 0 477 523" width="110" height="121" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#vicu-shape" fill="white"/></svg>
+          <div class="epoca-brand" style="color:#fff;">VICUNIA</div>
+          <div class="epoca-sub" style="color:rgba(255,255,255,.75);">REGALOS ÚNICOS</div>
         </div>
-        <div class="eca-body">
-          <p class="eca-nombre" style="color:var(--morado);">💜 DÍA DE LA MADRE</p>
-          <p class="eca-desc">El día más importante del año. Flores, amigurumis y regalos que emocionan de verdad.</p>
-          <div class="eca-tags"><span class="etag">2DO DOM. MAYO</span><span class="etag">MAMÁ</span></div>
-        </div>
-      </article>
-
-      <article class="eca reveal">
-        <div class="eca-head" style="background:linear-gradient(135deg,#D91023,#870a14);">
-          <svg class="eca-bg-vicu" viewBox="0 0 477 523" width="100" height="110" aria-hidden="true"><use href="#vicu" fill="white"/></svg>
-          <p class="eca-brand" style="color:#fff;">VICUNIA</p>
-          <p class="eca-sub" style="color:rgba(255,255,255,.75);">REGALOS ÚNICOS</p>
-        </div>
-        <div class="eca-body">
-          <p class="eca-nombre" style="color:var(--patria);">🇵🇪 FIESTAS PATRIAS</p>
-          <p class="eca-desc">Rojo peruano. Souvenir, pedido corporativo y regalos patrióticos de calidad artesanal.</p>
-          <div class="eca-tags"><span class="etag">28 JULIO</span><span class="etag">SOUVENIRS</span></div>
+        <div class="epoca-body">
+          <p class="epoca-nombre" style="color:var(--morado);">💜 DÍA DE LA MADRE</p>
+          <p class="epoca-desc">El día más importante del año para VICUNIA. Flores, amigurumis y regalos que emocionan.</p>
+          <div class="epoca-tags"><span class="etag">2DO DOM. MAYO</span><span class="etag">MAMÁ</span></div>
         </div>
       </article>
 
-      <article class="eca reveal">
-        <div class="eca-head" style="background:linear-gradient(135deg,#1a6b1a,#2E7D32);">
-          <svg class="eca-bg-vicu" viewBox="0 0 477 523" width="100" height="110" aria-hidden="true"><use href="#vicu" fill="white"/></svg>
-          <p class="eca-brand" style="color:#fff;">VICUNIA</p>
-          <p class="eca-sub" style="color:rgba(255,255,255,.75);">REGALOS ÚNICOS</p>
+      <!-- Fiestas Patrias -->
+      <article class="epoca-card reveal">
+        <div class="epoca-head" style="background:linear-gradient(135deg,#D91023,#870a14);">
+          <svg class="epoca-vicu" viewBox="0 0 477 523" width="110" height="121" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#vicu-shape" fill="white"/></svg>
+          <div class="epoca-brand" style="color:#fff;">VICUNIA</div>
+          <div class="epoca-sub" style="color:rgba(255,255,255,.75);">REGALOS ÚNICOS</div>
         </div>
-        <div class="eca-body">
-          <p class="eca-nombre" style="color:var(--jalca);">⚽ COPA DEL MUNDO 2026</p>
-          <p class="eca-desc">Edición especial verde cancha. Amigurumis, llaveros y pelotas de crochet para el mundial.</p>
-          <div class="eca-tags"><span class="etag">2026</span><span class="etag">MUNDIAL</span></div>
-        </div>
-      </article>
-
-      <article class="eca reveal">
-        <div class="eca-head" style="background:linear-gradient(135deg,#1B5E20,#D91023);">
-          <svg class="eca-bg-vicu" viewBox="0 0 477 523" width="100" height="110" aria-hidden="true"><use href="#vicu" fill="white"/></svg>
-          <p class="eca-brand" style="color:#fff;">VICUNIA</p>
-          <p class="eca-sub" style="color:rgba(255,255,255,.75);">REGALOS ÚNICOS</p>
-        </div>
-        <div class="eca-body">
-          <p class="eca-nombre" style="color:var(--jalca);">🎄 NAVIDAD</p>
-          <p class="eca-desc">Verde y rojo navideño. Packs, ramos y amigurumis para los regalos más esperados del año.</p>
-          <div class="eca-tags"><span class="etag">DICIEMBRE</span><span class="etag">FIN DE AÑO</span></div>
+        <div class="epoca-body">
+          <p class="epoca-nombre" style="color:var(--patria);">🇵🇪 FIESTAS PATRIAS</p>
+          <p class="epoca-desc">Rojo peruano. Para souvenir, pedido corporativo y regalos patrióticos de calidad artesanal.</p>
+          <div class="epoca-tags"><span class="etag">28 JULIO</span><span class="etag">SOUVENIRS</span></div>
         </div>
       </article>
 
-      <article class="eca reveal">
-        <div class="eca-head" style="background:var(--espresso);">
-          <svg class="eca-bg-vicu" viewBox="0 0 477 523" width="100" height="110" aria-hidden="true"><use href="#vicu" fill="url(#g-anim)"/></svg>
-          <p class="eca-brand" style="background:linear-gradient(90deg,#D4500A,#F0A500,#2E7D32,#7B3F9E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">VICUNIA</p>
-          <p class="eca-sub" style="color:rgba(253,246,227,.5);">REGALOS ÚNICOS</p>
+      <!-- Copa del Mundial -->
+      <article class="epoca-card reveal">
+        <div class="epoca-head" style="background:linear-gradient(135deg,#1a6b1a,#2E7D32);">
+          <svg class="epoca-vicu" viewBox="0 0 477 523" width="110" height="121" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#vicu-shape" fill="white"/></svg>
+          <div class="epoca-brand" style="color:#fff;">VICUNIA</div>
+          <div class="epoca-sub" style="color:rgba(255,255,255,.75);">REGALOS ÚNICOS</div>
         </div>
-        <div class="eca-body">
-          <p class="eca-nombre" style="color:var(--retama);">⭐ TODO EL AÑO</p>
-          <p class="eca-desc">La versión multicolor es nuestra firma permanente. Para cualquier día y cualquier persona.</p>
-          <div class="eca-tags"><span class="etag">SIEMPRE</span><span class="etag">MULTICOLOR</span></div>
+        <div class="epoca-body">
+          <p class="epoca-nombre" style="color:var(--jalca);">⚽ COPA DEL MUNDO 2026</p>
+          <p class="epoca-desc">Edición especial verde cancha. Llaveros, amigurumis y pelotas de crochet para el mundial.</p>
+          <div class="epoca-tags"><span class="etag">2026</span><span class="etag">MUNDIAL</span><span class="etag">FÚTBOL</span></div>
+        </div>
+      </article>
+
+      <!-- Navidad -->
+      <article class="epoca-card reveal">
+        <div class="epoca-head" style="background:linear-gradient(135deg,#1B5E20,#D91023);">
+          <svg class="epoca-vicu" viewBox="0 0 477 523" width="110" height="121" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#vicu-shape" fill="white"/></svg>
+          <div class="epoca-brand" style="color:#fff;">VICUNIA</div>
+          <div class="epoca-sub" style="color:rgba(255,255,255,.75);">REGALOS ÚNICOS</div>
+        </div>
+        <div class="epoca-body">
+          <p class="epoca-nombre" style="color:var(--jalca);">🎄 NAVIDAD</p>
+          <p class="epoca-desc">Verde y rojo navideño. Los regalos más esperados del año: packs, ramos y amigurumis navideños.</p>
+          <div class="epoca-tags"><span class="etag">DICIEMBRE</span><span class="etag">FIN DE AÑO</span></div>
+        </div>
+      </article>
+
+      <!-- Todo el año -->
+      <article class="epoca-card reveal">
+        <div class="epoca-head" style="background:var(--espresso);">
+          <svg class="epoca-vicu" viewBox="0 0 477 523" width="110" height="121" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="g-always"><stop offset="0%" stop-color="#D4500A"/><stop offset="50%" stop-color="#F0A500"/><stop offset="100%" stop-color="#7B3F9E"/></linearGradient></defs>
+            <use href="#vicu-shape" fill="url(#g-always)"/>
+          </svg>
+          <div class="epoca-brand" style="background:linear-gradient(90deg,#D4500A,#F0A500,#2E7D32,#7B3F9E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">VICUNIA</div>
+          <div class="epoca-sub" style="color:rgba(253,243,220,.5);">REGALOS ÚNICOS</div>
+        </div>
+        <div class="epoca-body">
+          <p class="epoca-nombre" style="color:var(--retama);">⭐ TODO EL AÑO</p>
+          <p class="epoca-desc">La versión multicolor es nuestra firma permanente. Para cualquier día, cualquier persona.</p>
+          <div class="epoca-tags"><span class="etag">SIEMPRE</span><span class="etag">MULTICOLOR</span></div>
         </div>
       </article>
 
@@ -1744,160 +1775,219 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════
      SISTEMA DE LOGOS
-══════════════════════════════════════════════════ -->
-<section class="logos-sec sec" id="logos" aria-label="Sistema de logos VICUNIA">
-  <div class="sec-inner">
-    <p class="sec-num text-label reveal" style="color:var(--retama);">06 — SISTEMA DE LOGOS</p>
-    <h2 class="sec-title reveal" style="margin-top:.5rem;">
-      La vicuña en<br><span class="sec-title-em" style="color:var(--retama);">todos sus fondos</span>
+══════════════════════════════════════════════════════ -->
+<section class="logos-sec" id="logos" aria-label="Sistema de logos VICUNIA">
+  <div class="logos-inner">
+    <p class="brand-label reveal" style="color:var(--retama);">06 — SISTEMA DE LOGOS</p>
+    <h2 class="brand-title reveal" style="font-size:clamp(2.5rem,6vw,5rem);margin-top:var(--space-3);">
+      La vicuña en<br><span class="italic-accent" style="color:var(--retama);">todos sus fondos</span>
     </h2>
-    <p class="reveal" style="font-size:var(--t-lg);font-weight:300;opacity:.55;margin-top:var(--s-4);max-width:52ch;line-height:1.75;">
-      La <strong style="color:var(--retama);font-weight:500;">V</strong> de la vicuña aparece siempre como hueco — el fondo del soporte se ve a través de ella, integrando el logo con cualquier superficie.
+    <p class="reveal" style="font-size:var(--type-lg);font-weight:300;opacity:.6;margin-top:var(--space-4);max-width:560px;line-height:1.7;">
+      La <strong style="color:var(--retama);font-weight:600;">V</strong> de la vicuña siempre aparece como hueco — el fondo del soporte se ve a través de ella, integrando el logo con cualquier superficie.
     </p>
     <div class="logos-grid">
+
+      <!-- 1 Principal -->
       <div class="logo-card reveal">
         <div class="logo-face" style="background:var(--barro);">
-          <svg viewBox="0 0 477 523" width="76" height="84" aria-label="Logo VICUNIA principal sobre barro"><use href="#vicu" fill="#FDF6E3"/></svg>
-          <div class="logo-div" style="background:var(--carnaval);"></div>
+          <svg viewBox="0 0 477 523" width="80" height="88" xmlns="http://www.w3.org/2000/svg" aria-label="Logo VICUNIA principal">
+            <use href="#vicu-shape" fill="#FDF3DC"/>
+          </svg>
+          <div class="logo-divider" style="background:var(--carnaval);"></div>
           <div class="logo-sub" style="color:var(--retama);">REGALOS ÚNICOS</div>
         </div>
-        <div class="logo-info"><p class="logo-uso">Principal · Todo uso</p></div>
+        <div class="logo-info" style="background:rgba(92,51,23,.4);">
+          <div class="logo-uso">Principal · Todo uso</div>
+        </div>
       </div>
+
+      <!-- 2 Sello -->
       <div class="logo-card reveal">
         <div class="logo-face" style="background:var(--queso);outline:2px solid var(--carnaval);outline-offset:-2px;">
-          <svg viewBox="0 0 477 523" width="76" height="84" aria-label="Logo VICUNIA para sello"><use href="#vicu" fill="#5C3317"/></svg>
-          <div class="logo-div" style="background:var(--carnaval);"></div>
+          <svg viewBox="0 0 477 523" width="80" height="88" xmlns="http://www.w3.org/2000/svg" aria-label="Logo VICUNIA sello">
+            <use href="#vicu-shape" fill="#5C3317"/>
+          </svg>
+          <div class="logo-divider" style="background:var(--carnaval);"></div>
           <div class="logo-sub" style="color:var(--carnaval);">REGALOS ÚNICOS</div>
         </div>
-        <div class="logo-info"><p class="logo-uso" style="color:var(--queso);">Sello · Impresión 3D</p></div>
+        <div class="logo-info" style="background:rgba(253,243,220,.1);">
+          <div class="logo-uso" style="color:var(--queso);">Sello · Impresión 3D</div>
+        </div>
       </div>
+
+      <!-- 3 Dark -->
       <div class="logo-card reveal">
         <div class="logo-face" style="background:#111;">
-          <svg viewBox="0 0 477 523" width="76" height="84" aria-label="Logo VICUNIA sobre fondo negro"><use href="#vicu" fill="#F0A500"/></svg>
-          <div class="logo-div" style="background:var(--retama);"></div>
+          <svg viewBox="0 0 477 523" width="80" height="88" xmlns="http://www.w3.org/2000/svg" aria-label="Logo VICUNIA oscuro">
+            <use href="#vicu-shape" fill="#F0A500"/>
+          </svg>
+          <div class="logo-divider" style="background:var(--retama);"></div>
           <div class="logo-sub" style="color:var(--queso);opacity:.7;">REGALOS ÚNICOS</div>
         </div>
-        <div class="logo-info"><p class="logo-uso">Fondos oscuros</p></div>
+        <div class="logo-info" style="background:rgba(0,0,0,.4);">
+          <div class="logo-uso">Fondos oscuros</div>
+        </div>
       </div>
+
+      <!-- 4 Carnaval -->
       <div class="logo-card reveal">
         <div class="logo-face" style="background:var(--carnaval);">
-          <svg viewBox="0 0 477 523" width="76" height="84" aria-label="Logo VICUNIA naranja carnaval"><use href="#vicu" fill="#FDF6E3"/></svg>
-          <div class="logo-div" style="background:rgba(255,255,255,.45);"></div>
-          <div class="logo-sub" style="color:rgba(255,255,255,.88);">REGALOS ÚNICOS</div>
+          <svg viewBox="0 0 477 523" width="80" height="88" xmlns="http://www.w3.org/2000/svg" aria-label="Logo VICUNIA carnaval">
+            <use href="#vicu-shape" fill="#FDF3DC"/>
+          </svg>
+          <div class="logo-divider" style="background:rgba(255,255,255,.5);"></div>
+          <div class="logo-sub" style="color:rgba(255,255,255,.85);">REGALOS ÚNICOS</div>
         </div>
-        <div class="logo-info"><p class="logo-uso">Temporada carnaval</p></div>
+        <div class="logo-info" style="background:rgba(212,80,10,.4);">
+          <div class="logo-uso">Temporada carnaval</div>
+        </div>
       </div>
+
+      <!-- 5 Morado -->
       <div class="logo-card reveal">
         <div class="logo-face" style="background:var(--morado);">
-          <svg viewBox="0 0 477 523" width="76" height="84" aria-label="Logo VICUNIA morado"><use href="#vicu" fill="#fff"/></svg>
-          <div class="logo-div" style="background:#f48fb1;"></div>
+          <svg viewBox="0 0 477 523" width="80" height="88" xmlns="http://www.w3.org/2000/svg" aria-label="Logo VICUNIA morado">
+            <use href="#vicu-shape" fill="#fff"/>
+          </svg>
+          <div class="logo-divider" style="background:#f48fb1;"></div>
           <div class="logo-sub" style="color:#f8bbd0;">REGALOS ÚNICOS</div>
         </div>
-        <div class="logo-info"><p class="logo-uso">Día de la madre</p></div>
+        <div class="logo-info" style="background:rgba(123,63,158,.4);">
+          <div class="logo-uso">Día de la madre</div>
+        </div>
       </div>
+
+      <!-- 6 Verde -->
       <div class="logo-card reveal">
         <div class="logo-face" style="background:#1B5E20;">
-          <svg viewBox="0 0 477 523" width="76" height="84" aria-label="Logo VICUNIA verde navidad"><use href="#vicu" fill="#FDF6E3"/></svg>
-          <div class="logo-div" style="background:var(--retama);"></div>
+          <svg viewBox="0 0 477 523" width="80" height="88" xmlns="http://www.w3.org/2000/svg" aria-label="Logo VICUNIA navidad">
+            <use href="#vicu-shape" fill="#FDF3DC"/>
+          </svg>
+          <div class="logo-divider" style="background:var(--retama);"></div>
           <div class="logo-sub" style="color:var(--retama);">REGALOS ÚNICOS</div>
         </div>
-        <div class="logo-info"><p class="logo-uso">Navidad · Mundial</p></div>
+        <div class="logo-info" style="background:rgba(27,94,32,.4);">
+          <div class="logo-uso">Navidad · Mundial</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     PALETA DE COLORES
+══════════════════════════════════════════════════════ -->
+<section class="paleta-sec" id="paleta" aria-label="Paleta de colores VICUNIA">
+  <div class="paleta-inner">
+    <p class="brand-label reveal" style="color:var(--barro);">07 — PALETA CAJAMARQUINA</p>
+    <h2 class="brand-title reveal" style="font-size:clamp(2.5rem,6vw,5rem);margin-top:var(--space-3);color:var(--espresso);">
+      Los 7 colores<br><span class="italic-accent" style="color:var(--carnaval);">de VICUNIA</span>
+    </h2>
+    <div class="paleta-grid reveal">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#D4500A;"></div>
+        <div class="swatch-info"><div class="swatch-name">CARNAVAL</div><div class="swatch-hex">#D4500A</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F0A500;"></div>
+        <div class="swatch-info"><div class="swatch-name">RETAMA</div><div class="swatch-hex">#F0A500</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2E7D32;"></div>
+        <div class="swatch-info"><div class="swatch-name">JALCA</div><div class="swatch-hex">#2E7D32</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#7B3F9E;"></div>
+        <div class="swatch-info"><div class="swatch-name">MORADO</div><div class="swatch-hex">#7B3F9E</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C2185B;"></div>
+        <div class="swatch-info"><div class="swatch-name">ROSA</div><div class="swatch-hex">#C2185B</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#003087;"></div>
+        <div class="swatch-info"><div class="swatch-name">AZUL</div><div class="swatch-hex">#003087</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#5C3317;"></div>
+        <div class="swatch-info"><div class="swatch-name">BARRO</div><div class="swatch-hex">#5C3317</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     PALETA
-══════════════════════════════════════════════════ -->
-<section class="paleta-sec sec" id="paleta" aria-label="Paleta de colores VICUNIA">
-  <div class="sec-inner">
-    <p class="sec-num text-label reveal" style="color:var(--barro);">07 — PALETA CAJAMARQUINA</p>
-    <h2 class="sec-title reveal" style="margin-top:.5rem;color:var(--espresso);">
-      Los 7 colores<br><span class="sec-title-em" style="color:var(--carnaval);">de VICUNIA</span>
-    </h2>
-    <div class="paleta-grid reveal">
-      <div class="swatch"><div class="swatch-color" style="background:#D4500A;"></div><div class="swatch-info"><p class="swatch-name">CARNAVAL</p><p class="swatch-hex">#D4500A</p></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#F0A500;"></div><div class="swatch-info"><p class="swatch-name">RETAMA</p><p class="swatch-hex">#F0A500</p></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#2E7D32;"></div><div class="swatch-info"><p class="swatch-name">JALCA</p><p class="swatch-hex">#2E7D32</p></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#7B3F9E;"></div><div class="swatch-info"><p class="swatch-name">MORADO</p><p class="swatch-hex">#7B3F9E</p></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#C2185B;"></div><div class="swatch-info"><p class="swatch-name">ROSA</p><p class="swatch-hex">#C2185B</p></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#003087;"></div><div class="swatch-info"><p class="swatch-name">AZUL</p><p class="swatch-hex">#003087</p></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#5C3317;"></div><div class="swatch-info"><p class="swatch-name">BARRO</p><p class="swatch-hex">#5C3317</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════
      TIPOGRAFÍA
-══════════════════════════════════════════════════ -->
-<section class="tipo-sec sec" id="tipografia" aria-label="Tipografía de marca VICUNIA">
-  <div class="sec-inner">
-    <p class="sec-num text-label reveal" style="color:var(--retama);">08 — TIPOGRAFÍA</p>
-    <h2 class="sec-title reveal" style="margin-top:.5rem;">
-      Las voces<br><span class="sec-title-em" style="color:var(--retama);">de la marca</span>
+══════════════════════════════════════════════════════ -->
+<section class="tipo-sec" id="tipografia" aria-label="Tipografía de marca VICUNIA">
+  <div class="tipo-inner">
+    <p class="brand-label reveal" style="color:var(--retama);">08 — TIPOGRAFÍA</p>
+    <h2 class="brand-title reveal" style="font-size:clamp(2.5rem,6vw,5rem);margin-top:var(--space-3);">
+      Las voces<br><span class="italic-accent" style="color:var(--retama);">de la marca</span>
     </h2>
     <div class="tipo-grid">
       <div class="tipo-card reveal">
-        <div class="tipo-specimen-main" style="color:var(--retama);">Syne</div>
-        <div class="tipo-specimen-main" style="font-size:1.8rem;opacity:.35;letter-spacing:.02em;">ABCDE 01234</div>
-        <div class="tipo-sep"></div>
-        <div>
-          <div class="tipo-row"><span class="tipo-key">Uso</span><span class="tipo-val">WORDMARK · TÍTULOS · UI</span></div>
-          <div class="tipo-row"><span class="tipo-key">Pesos</span><span class="tipo-val">400 · 600 · 700 · 800</span></div>
-          <div class="tipo-row"><span class="tipo-key">Carácter</span><span class="tipo-val">GEOMÉTRICO · MODERNO · IMPACTANTE</span></div>
-          <div class="tipo-row"><span class="tipo-key">Nota</span><span class="tipo-val">NO ES INTER — FUENTE DISTINCTIVE</span></div>
+        <div class="tipo-sample">
+          <div class="tipo-specimen-main" style="color:var(--retama);">Montserrat</div>
+          <div class="tipo-specimen-main" style="font-size:clamp(1.2rem,3vw,2rem);opacity:.5;">ABCDEFG 0123456</div>
+        </div>
+        <div class="tipo-meta">
+          <div class="tipo-rule"><span class="tipo-rule-key">Uso</span><span class="tipo-rule-val">WORDMARK · TÍTULOS · LABELS</span></div>
+          <div class="tipo-rule"><span class="tipo-rule-key">Pesos</span><span class="tipo-rule-val">400 · 600 · 800 · 900</span></div>
+          <div class="tipo-rule"><span class="tipo-rule-key">Carácter</span><span class="tipo-rule-val">BOLD · GEOMÉTRICO · MODERNO</span></div>
         </div>
       </div>
       <div class="tipo-card reveal">
-        <div class="tipo-specimen-serif">Lora Italic</div>
-        <div class="tipo-specimen-serif" style="font-size:1.2rem;opacity:.35;">para énfasis editorial</div>
-        <div class="tipo-sep"></div>
-        <div>
-          <div class="tipo-row"><span class="tipo-key">Uso</span><span class="tipo-val">ACENTOS · CITAS · ÉNFASIS</span></div>
-          <div class="tipo-row"><span class="tipo-key">Pesos</span><span class="tipo-val">400 ITALIC · 600 ITALIC</span></div>
-          <div class="tipo-row"><span class="tipo-key">Carácter</span><span class="tipo-val">EDITORIAL · CÁLIDO · SERIF</span></div>
+        <div class="tipo-sample">
+          <div class="tipo-specimen-italic">Playfair Display</div>
+          <div class="tipo-specimen-italic" style="font-size:1.2rem;opacity:.5;">énfasis & elegancia</div>
+        </div>
+        <div class="tipo-meta">
+          <div class="tipo-rule"><span class="tipo-rule-key">Uso</span><span class="tipo-rule-val">ACENTOS · CITAS · ÉNFASIS</span></div>
+          <div class="tipo-rule"><span class="tipo-rule-key">Pesos</span><span class="tipo-rule-val">400 ITALIC · 700</span></div>
+          <div class="tipo-rule"><span class="tipo-rule-key">Carácter</span><span class="tipo-rule-val">EDITORIAL · CÁLIDO · ÚNICO</span></div>
         </div>
       </div>
       <div class="tipo-card reveal">
-        <div class="tipo-specimen-body" style="font-size:1rem;opacity:1;margin-bottom:var(--s-3);">DM Sans — la voz del cuerpo. Legible, fresca y accesible en cualquier tamaño.</div>
-        <div class="tipo-sep"></div>
-        <div>
-          <div class="tipo-row"><span class="tipo-key">Uso</span><span class="tipo-val">CUERPO · DESCRIPCIONES</span></div>
-          <div class="tipo-row"><span class="tipo-key">Pesos</span><span class="tipo-val">300 · 400 · 500</span></div>
-          <div class="tipo-row"><span class="tipo-key">Line height</span><span class="tipo-val">1.6–1.85 PARA LEGIBILIDAD</span></div>
+        <div class="tipo-sample">
+          <div class="tipo-specimen-body" style="font-size:1.2rem;opacity:1;">DM Sans — la voz del cuerpo. Legible, moderna y accesible en cualquier tamaño. Perfecta para descripciones y texto largo.</div>
+        </div>
+        <div class="tipo-meta">
+          <div class="tipo-rule"><span class="tipo-rule-key">Uso</span><span class="tipo-rule-val">CUERPO · DESCRIPCIONES</span></div>
+          <div class="tipo-rule"><span class="tipo-rule-key">Pesos</span><span class="tipo-rule-val">300 · 400 · 500</span></div>
+          <div class="tipo-rule"><span class="tipo-rule-key">Carácter</span><span class="tipo-rule-val">LEGIBLE · FRESCO · NEUTRO</span></div>
         </div>
       </div>
-      <div class="tipo-card reveal">
-        <div style="margin-bottom:var(--s-4);">
-          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.01em;color:var(--retama);line-height:1.1;margin-bottom:4px;">VICUNIA</div>
-          <div style="font-family:'Lora',serif;font-style:italic;font-size:1.3rem;color:rgba(253,246,227,.55);">Regalos únicos</div>
-          <div style="font-size:var(--t-sm);font-weight:300;opacity:.35;margin-top:4px;">Cajamarca · Perú · 2025</div>
+      <div class="tipo-card reveal" style="display:flex;flex-direction:column;gap:var(--space-6);">
+        <div class="tipo-sample" style="border:none;padding:0;margin:0;">
+          <p style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1rem;letter-spacing:.04em;margin-bottom:8px;">Jerarquía en acción:</p>
+          <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:2rem;letter-spacing:-.01em;color:var(--retama);line-height:1.1;">VICUNIA</div>
+          <div class="italic-accent" style="font-size:1.3rem;color:rgba(253,243,220,.6);">Regalos únicos</div>
+          <div style="font-size:.8rem;font-weight:300;opacity:.45;margin-top:4px;">Cajamarca · Perú · 2025</div>
         </div>
-        <div class="tipo-sep"></div>
-        <div>
-          <div class="tipo-row"><span class="tipo-key">Regla 1</span><span class="tipo-val">SYNE SIEMPRE EN CAPS</span></div>
-          <div class="tipo-row"><span class="tipo-key">Regla 2</span><span class="tipo-val">LORA SOLO ITALIC</span></div>
-          <div class="tipo-row"><span class="tipo-key">Regla 3</span><span class="tipo-val">DM SANS PARA CUERPO</span></div>
-          <div class="tipo-row"><span class="tipo-key">Escala</span><span class="tipo-val">MAJOR THIRD 1.25×</span></div>
+        <div class="tipo-meta">
+          <div class="tipo-rule"><span class="tipo-rule-key">Regla #1</span><span class="tipo-rule-val">MONTSERRAT SIEMPRE CAPS</span></div>
+          <div class="tipo-rule"><span class="tipo-rule-key">Regla #2</span><span class="tipo-rule-val">PLAYFAIR SOLO ITALIC</span></div>
+          <div class="tipo-rule"><span class="tipo-rule-key">Regla #3</span><span class="tipo-rule-val">DM SANS EN CUERPO</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     PEDIDOS — gran cierre
-══════════════════════════════════════════════════ -->
-<section class="pedidos-sec sec" id="pedidos" aria-label="Hacer un pedido a VICUNIA">
+<!-- ══════════════════════════════════════════════════════
+     PEDIDOS CTA
+══════════════════════════════════════════════════════ -->
+<section class="pedidos-sec" id="pedidos" aria-label="Hacer un pedido a VICUNIA">
   <div class="pedidos-inner">
-    <svg viewBox="0 0 477 523" width="90" height="99" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto var(--s-8);filter:drop-shadow(0 12px 40px rgba(0,0,0,.3));" aria-hidden="true">
-      <use href="#vicu" fill="rgba(255,255,255,0.92)"/>
+    <svg viewBox="0 0 477 523" width="100" height="110" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto var(--space-8);filter:drop-shadow(0 8px 32px rgba(0,0,0,0.3));" aria-hidden="true">
+      <use href="#vicu-shape" fill="rgba(255,255,255,0.9)"/>
     </svg>
     <h2 class="pedidos-title reveal">
-      ¿Lista para<br>tu regalo <em>especial</em>?
+      ¿Lista para tu<br>regalo <em>especial</em>?
     </h2>
     <p class="pedidos-sub reveal">
       Escríbenos y en menos de 24 horas tenemos una propuesta personalizada para ti.
@@ -1906,110 +1996,112 @@ footer {
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       ESCRIBIR POR WHATSAPP
     </a>
-    <p style="margin-top:var(--s-5);font-size:var(--t-sm);opacity:.5;font-weight:300;color:var(--queso);">
-      Respuesta &lt; 24 h · Cajamarca, Perú · Envíos disponibles
+    <p style="margin-top:var(--space-6);font-size:var(--type-sm);opacity:.5;font-weight:300;">
+      Respuesta en &lt; 24 h · Cajamarca, Perú · Envíos disponibles
     </p>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════
      FOOTER
-══════════════════════════════════════════════════ -->
+══════════════════════════════════════════════════════ -->
 <footer role="contentinfo">
-  <div class="footer-brand">
-    <svg viewBox="0 0 477 523" width="48" height="53" aria-hidden="true"><use href="#vicu" fill="#D4500A"/></svg>
-    <div class="footer-name">
+  <div class="footer-vicu">
+    <svg viewBox="0 0 477 523" width="52" height="57" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <use href="#vicu-shape" fill="#D4500A"/>
+    </svg>
+    <div class="footer-wordmark">
       <span style="color:#D4500A;">V</span><span style="color:#F0A500;">I</span><span style="color:#2E7D32;">C</span><span style="color:#7B3F9E;">U</span><span style="color:#C2185B;">N</span><span style="color:#003087;">I</span><span style="color:#5C3317;">A</span>
     </div>
   </div>
   <p class="footer-tagline">REGALOS ÚNICOS · CAJAMARCA · PERÚ</p>
-  <nav class="footer-nav" aria-label="Navegación footer">
-    <a href="#quienes" id="f-nosotros">NOSOTROS</a>
-    <a href="#productos" id="f-productos">PRODUCTOS</a>
-    <a href="#proceso" id="f-proceso">PROCESO</a>
-    <a href="#epocas" id="f-epocas">ÉPOCAS</a>
-    <a href="#logos" id="f-logos">LOGOS</a>
-    <a href="#paleta" id="f-paleta">COLORES</a>
-    <a href="https://wa.me/51999999999" id="f-wa">WHATSAPP</a>
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href="#quienes" id="footer-link-nosotros">NOSOTROS</a>
+    <a href="#productos" id="footer-link-productos">PRODUCTOS</a>
+    <a href="#proceso" id="footer-link-proceso">PROCESO</a>
+    <a href="#epocas" id="footer-link-epocas">ÉPOCAS</a>
+    <a href="#logos" id="footer-link-logos">LOGOS</a>
+    <a href="#paleta" id="footer-link-paleta">COLORES</a>
+    <a href="https://wa.me/51999999999" id="footer-link-wa">WHATSAPP</a>
   </nav>
   <p class="footer-copy">© 2025 VICUNIA · Hecho con amor en Cajamarca, Perú 🇵🇪</p>
 </footer>
 
 <!-- WhatsApp FAB -->
 <a href="https://wa.me/51999999999?text=Hola%20VICUNIA!%20Quiero%20hacer%20un%20pedido." id="wa-fab" class="wa-fab" aria-label="Contactar VICUNIA por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="white" width="26" height="26" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="white" aria-hidden="true">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
 </a>
 
 <script>
-/* ══════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
    SCROLL REVEAL — IntersectionObserver
-   Physics: ease-out, staggered delays
-══════════════════════════════════════════════════ */
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const siblings = [...(entry.target.parentElement?.children ?? [])];
-    const i = siblings.indexOf(entry.target);
-    entry.target.style.transitionDelay = `${Math.min(i * 0.07, 0.35)}s`;
-    entry.target.classList.add('visible');
-    revealObs.unobserve(entry.target);
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-/* ══════════════════════════════════════════════════
-   POMPONES — hero
-══════════════════════════════════════════════════ */
-const COLORS = ['#D4500A','#F0A500','#2E7D32','#7B3F9E','#C2185B','#003087','#5C3317'];
-const hero = document.querySelector('.hero');
-if (hero && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-  for (let i = 0; i < 16; i++) {
-    const p = document.createElement('div');
-    p.className = 'pom';
-    const s = 5 + Math.random() * 9;
-    Object.assign(p.style, {
-      width: s + 'px',
-      height: s + 'px',
-      background: COLORS[Math.floor(Math.random() * COLORS.length)],
-      left: Math.random() * 100 + '%',
-      animationDuration: (7 + Math.random() * 10) + 's',
-      animationDelay: -(Math.random() * 15) + 's',
-      opacity: 0.4 + Math.random() * 0.5
-    });
-    hero.appendChild(p);
-  }
-}
-
-/* ══════════════════════════════════════════════════
-   BENTO CARDS — WhatsApp deeplink por producto
-══════════════════════════════════════════════════ */
-document.querySelectorAll('.bcard:not(.bcard-cta)').forEach(card => {
-  const name = card.querySelector('.bcard-name')?.textContent?.trim() ?? 'producto';
-  const handleActivate = () => {
-    const msg = encodeURIComponent(`¡Hola VICUNIA! Me interesa el producto: ${name}. ¿Pueden darme más información?`);
-    window.open(`https://wa.me/51999999999?text=${msg}`, '_blank', 'noopener');
-  };
-  card.addEventListener('click', handleActivate);
-  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleActivate(); } });
-});
-
-/* ══════════════════════════════════════════════════
-   NAV — active highlight por sección visible
-══════════════════════════════════════════════════ */
-const navLinks = document.querySelectorAll('.nav-links a');
-const secObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+══════════════════════════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      navLinks.forEach(a => { a.removeAttribute('aria-current'); a.style.opacity = '.4'; });
-      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-      if (active) { active.setAttribute('aria-current','page'); active.style.opacity = '1'; }
+      // Stagger delay based on position in parent
+      const siblings = Array.from(entry.target.parentElement?.children || []);
+      const idx = siblings.indexOf(entry.target);
+      entry.target.style.transitionDelay = `${Math.min(idx * 0.08, 0.4)}s`;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.45 });
-document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal,.reveal-left').forEach(el => observer.observe(el));
+
+/* ══════════════════════════════════════════════════════
+   POMPONES DE CARNAVAL
+══════════════════════════════════════════════════════ */
+const colors  = ['#D4500A','#F0A500','#2E7D32','#7B3F9E','#C2185B','#003087','#5C3317'];
+const hero    = document.querySelector('.hero');
+for (let i = 0; i < 18; i++) {
+  const p = document.createElement('div');
+  p.className = 'pom';
+  const size = 6 + Math.random() * 10;
+  p.style.cssText = `
+    width:${size}px; height:${size}px;
+    background:${colors[Math.floor(Math.random()*colors.length)]};
+    left:${Math.random()*100}%;
+    animation-duration:${6+Math.random()*10}s;
+    animation-delay:${Math.random()*-14}s;
+    opacity:${0.4+Math.random()*0.5};
+  `;
+  hero?.appendChild(p);
+}
+
+/* ══════════════════════════════════════════════════════
+   NAV — active link highlight on scroll
+══════════════════════════════════════════════════════ */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const navObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.style.opacity = '.4');
+      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (active) active.style.opacity = '1';
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(s => navObs.observe(s));
+
+/* ══════════════════════════════════════════════════════
+   BENTO CARDS — WhatsApp deeplink on click
+══════════════════════════════════════════════════════ */
+document.querySelectorAll('.bento-card').forEach(card => {
+  card.style.cursor = 'pointer';
+  const name = card.querySelector('.bento-name')?.textContent || 'producto';
+  card.addEventListener('click', () => {
+    const msg = encodeURIComponent(`¡Hola VICUNIA! Me interesa el producto: ${name}. ¿Pueden darme más información?`);
+    window.open(`https://wa.me/51999999999?text=${msg}`, '_blank');
+  });
+});
 </script>
 </body>
 </html>
