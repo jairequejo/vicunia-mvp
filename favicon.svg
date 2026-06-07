@@ -1,30 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <!-- 7-color brand gradient diagonal — paleta cajamarquina completa -->
-    <linearGradient id="paleta-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"    stop-color="#7B3F9E"/> <!-- Morado festivo  -->
-      <stop offset="16%"   stop-color="#003087"/> <!-- Azul uniforme   -->
-      <stop offset="33%"   stop-color="#2E7D32"/> <!-- Verde jalca     -->
-      <stop offset="50%"   stop-color="#D4500A"/> <!-- Naranja carnaval-->
-      <stop offset="66%"   stop-color="#F0A500"/> <!-- Amarillo retama -->
-      <stop offset="83%"   stop-color="#C2185B"/> <!-- Rosa pasión     -->
-      <stop offset="100%"  stop-color="#D91023"/> <!-- Rojo patria     -->
-    </linearGradient>
+    <!-- Blur filter for blob/manchas effect -->
+    <filter id="blob" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="38"/>
+    </filter>
+    <!-- Clip to rounded square -->
+    <clipPath id="rounded">
+      <rect width="512" height="512" rx="96"/>
+    </clipPath>
   </defs>
 
-  <!-- Gradient background with rounded corners -->
-  <rect width="512" height="512" rx="96" fill="url(#paleta-grad)"/>
+  <!-- Base dark background -->
+  <rect width="512" height="512" rx="96" fill="#120A02"/>
 
-  <g transform="translate(64.5, 46) scale(0.803)">
+  <!-- Color blob manchas — radial color stains using blur -->
+  <g clip-path="url(#rounded)" filter="url(#blob)">
+    <circle cx="80"  cy="80"  r="160" fill="#A020FF" opacity="1"/>   <!-- Morado neón — top left   -->
+    <circle cx="430" cy="70"  r="140" fill="#FF4500" opacity="1"/>   <!-- Naranja saturado — top right -->
+    <circle cx="256" cy="200" r="130" fill="#FFB800" opacity="1"/>   <!-- Retama vibrante — center  -->
+    <circle cx="60"  cy="400" r="150" fill="#00C41C" opacity="1"/>   <!-- Verde neón — bottom left  -->
+    <circle cx="450" cy="380" r="140" fill="#FF0A6C" opacity="1"/>   <!-- Rosa fuerte — bottom right -->
+    <circle cx="200" cy="460" r="110" fill="#FF0A1A" opacity="1"/>   <!-- Rojo puro — bottom center -->
+    <circle cx="380" cy="260" r="120" fill="#0047FF" opacity="1"/>   <!-- Azul eléctrico — right    -->
+  </g>
+
+  <!-- Vicuña maximizada — translate y scale ajustados para llenar el canvas -->
+  <g transform="translate(16, 4) scale(1.02)">
     <g transform="translate(0,523) scale(0.1,-0.1)" stroke="none">
 
       <!-- LAYER 1: White solid vicuña body -->
       <path fill="#FFFFFF" d="M2951 4865 c-32 -28 -48 -68 -81 -210 -64 -269 -86 -469 -76 -713 l6 -164 -37 6 c-21 3 -59 8 -85 12 -47 6 -48 7 -92 83 -71 123 -129 193 -283 338 -156 148 -232 242 -333 408 -93 154 -147 195 -216 162 -18 -9 -41 -31 -50 -49 -39 -76 -37 -266 6 -479 38 -186 89 -308 208 -498 36 -58 61 -106 56 -108 -32 -11 -145 -86 -226 -150 -51 -41 -145 -110 -209 -153 -154 -104 -156 -106 -247 -312 -34 -75 -24 -66 -377 -333 -302 -228 -349 -282 -349 -400 0 -46 6 -72 27 -113 l27 -52 -40 -108 c-49 -128 -56 -205 -23 -268 36 -70 120 -108 143 -65 8 15 5 33 -11 73 -21 54 -22 85 -3 231 4 33 2 54 -9 70 -14 22 -14 22 23 19 53 -5 76 10 96 65 34 93 60 108 157 92 64 -11 76 -10 105 5 19 10 36 15 39 12 9 -9 -53 -35 -123 -51 -86 -20 -139 -51 -197 -115 -64 -71 -89 -129 -94 -214 -4 -60 -1 -78 19 -116 58 -112 203 -136 396 -65 40 15 59 19 48 10 -11 -8 -55 -29 -98 -45 -68 -26 -90 -30 -181 -30 -88 0 -106 -3 -120 -18 -43 -48 -6 -124 92 -189 90 -61 183 -88 301 -88 84 1 104 5 175 34 127 53 131 54 483 40 l324 -13 19 -24 c32 -41 41 -90 46 -257 8 -246 -15 -619 -53 -858 -9 -54 -13 -109 -10 -122 l6 -25 866 0 c784 0 865 1 871 16 3 9 -4 71 -15 138 -29 166 -30 178 -47 546 -21 483 -26 636 -35 1190 -10 542 -14 584 -70 795 -33 125 -72 224 -133 340 l-43 80 22 85 c79 307 50 621 -90 967 -29 72 -77 175 -107 229 -84 152 -211 336 -248 361 -47 32 -110 31 -150 -2z"/>
 
-      <!-- LAYER 2: V shape in deep dark (contrasts against white body) -->
+      <!-- LAYER 2: V shape in deep dark -->
       <path fill="#120A02" d="M3031 4616 c-52 -139 -81 -318 -81 -498 0 -148 12 -245 46 -383 38 -147 150 -425 173 -425 11 0 159 181 189 231 72 118 69 343 -8 579 -51 159 -258 550 -290 550 -5 0 -18 -24 -29 -54z"/>
 
-      <!-- LAYER 3: Face/neck detail lines in deep dark -->
+      <!-- LAYER 3: Face/neck detail lines -->
       <path fill="#120A02" d="M1898 3029 c-10 -5 -18 -17 -18 -25 0 -19 346 -880 366 -912 14 -22 19 -22 156 -20 l141 3 183 460 c101 253 184 463 184 467 0 4 -7 14 -16 22 -20 21 -241 23 -267 4 -13 -11 -108 -242 -202 -491 -10 -26 -21 -49 -25 -52 -3 -2 -53 114 -109 258 -57 144 -110 270 -119 280 -13 14 -33 17 -136 17 -67 0 -129 -5 -138 -11z"/>
 
     </g>
