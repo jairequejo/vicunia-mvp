@@ -1163,6 +1163,11 @@ footer {
   gap:var(--space-4);
   margin-bottom:var(--space-4);
 }
+.footer-vicu svg {
+  width: clamp(4rem, 10vw, 8rem);
+  height: auto;
+  flex-shrink: 0;
+}
 .footer-wordmark {
   font-family:'Montserrat',sans-serif;
   font-weight:900;
@@ -1496,7 +1501,7 @@ footer {
 
       <!-- CARD 1: Amigurumis — grande -->
       <div class="bento-card tall reveal" style="grid-column:span 1;">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/crochet_amigurumis_1780824164068.png" alt="Amigurumis de crochet VICUNIA" class="bento-img" loading="lazy">
+        <img src="img_amigurumis.png" alt="Amigurumis de crochet VICUNIA" class="bento-img" loading="lazy">
         <div class="bento-overlay"></div>
         <div class="bento-cta" aria-label="Pedir amigurumi">💬</div>
         <div class="bento-content">
@@ -1508,7 +1513,7 @@ footer {
 
       <!-- CARD 2: Flores — span 2, corto -->
       <div class="bento-card span-2 short reveal" style="position:relative;background:var(--jalca);">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/flores_crochet_1780824188547.png" alt="Flores de crochet VICUNIA" class="bento-img" loading="lazy" style="object-position:center 30%;">
+        <img src="img_flores.png" alt="Flores de crochet VICUNIA" class="bento-img" loading="lazy" style="object-position:center 30%;">
         <div class="bento-overlay"></div>
         <div class="bento-cta" aria-label="Pedir flores">💬</div>
         <div class="bento-content">
@@ -1520,7 +1525,7 @@ footer {
 
       <!-- CARD 3: Impresión 3D — corto -->
       <div class="bento-card short reveal">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/impresion_3d_llaveros_1780824176214.png" alt="Llaveros de impresión 3D VICUNIA" class="bento-img" loading="lazy">
+        <img src="img_3d.png" alt="Llaveros de impresión 3D VICUNIA" class="bento-img" loading="lazy">
         <div class="bento-overlay"></div>
         <div class="bento-cta" aria-label="Pedir llavero 3D">💬</div>
         <div class="bento-content">
@@ -1532,7 +1537,7 @@ footer {
 
       <!-- CARD 4: Ropa — corto -->
       <div class="bento-card short reveal">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/ropa_crochet_1780824209085.png" alt="Ropa de crochet VICUNIA" class="bento-img" loading="lazy">
+        <img src="img_ropa.png" alt="Ropa de crochet VICUNIA" class="bento-img" loading="lazy">
         <div class="bento-overlay"></div>
         <div class="bento-cta" aria-label="Pedir ropa crochet">💬</div>
         <div class="bento-content">
@@ -1544,7 +1549,7 @@ footer {
 
       <!-- CARD 5: Mundial/Ediciones — corto -->
       <div class="bento-card short reveal">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/mundial_copa_1780824221396.png" alt="Ediciones especiales Copa del Mundo" class="bento-img" loading="lazy">
+        <img src="img_mundial.png" alt="Ediciones especiales Copa del Mundo" class="bento-img" loading="lazy">
         <div class="bento-overlay"></div>
         <div class="bento-cta" aria-label="Ver ediciones especiales">💬</div>
         <div class="bento-content">
@@ -1556,7 +1561,7 @@ footer {
 
       <!-- CARD 6: Regalos — span 2 corto -->
       <div class="bento-card span-2 short reveal">
-        <img src="C:/Users/Jair/.gemini/antigravity-ide/brain/7a5ca8cd-beeb-40ad-88e7-c73bdac4a878/regalos_personalizados_1780824233818.png" alt="Regalos personalizados VICUNIA" class="bento-img" loading="lazy">
+        <img src="img_regalos.png" alt="Regalos personalizados VICUNIA" class="bento-img" loading="lazy">
         <div class="bento-overlay"></div>
         <div class="bento-cta" aria-label="Pedir regalo personalizado">💬</div>
         <div class="bento-content">
@@ -1953,7 +1958,8 @@ footer {
       </div>
       <div class="tipo-card reveal">
         <div class="tipo-sample">
-          <div class="tipo-specimen-body" style="font-size:1.2rem;opacity:1;">DM Sans — la voz del cuerpo. Legible, moderna y accesible en cualquier tamaño. Perfecta para descripciones y texto largo.</div>
+          <div class="tipo-specimen-body" style="font-size:clamp(2rem,5vw,3.2rem);font-weight:700;opacity:1;margin-top:0;line-height:1;">DM Sans</div>
+          <div class="tipo-specimen-body" style="font-size:1.1rem;opacity:.5;margin-top:var(--space-2);">la voz del cuerpo · legible y moderna</div>
         </div>
         <div class="tipo-meta">
           <div class="tipo-rule"><span class="tipo-rule-key">Uso</span><span class="tipo-rule-val">CUERPO · DESCRIPCIONES</span></div>
@@ -2007,7 +2013,7 @@ footer {
 ══════════════════════════════════════════════════════ -->
 <footer role="contentinfo">
   <div class="footer-vicu">
-    <svg viewBox="0 0 477 523" width="52" height="57" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg viewBox="0 0 477 523" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <use href="#vicu-shape" fill="#D4500A"/>
     </svg>
     <div class="footer-wordmark">
